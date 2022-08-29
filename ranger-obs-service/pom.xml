@@ -3,7 +3,7 @@
     <parent>
         <artifactId>ranger-obs</artifactId>
         <groupId>com.huawei.mrs</groupId>
-        <version>0.1.0</version>
+        <version>0.1.1</version>
         <relativePath>..</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -14,7 +14,7 @@
 
     <properties>
         <protobuf.version>2.5.0</protobuf.version>
-        <esdk.version>3.21.8.1</esdk.version>
+        <esdk.version>3.22.3.1</esdk.version>
     </properties>
 
     <dependencies>
@@ -51,13 +51,13 @@
         <dependency>
             <groupId>com.huawei.mrs</groupId>
             <artifactId>mrs-obs-provider</artifactId>
-            <version>3.1.1.47</version>
+            <version>3.1.1.50.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -95,7 +95,7 @@
                 <dependency>
                     <groupId>com.huawei.mrs</groupId>
                     <artifactId>mrs-obs-provider</artifactId>
-                    <version>3.1.1.47</version>
+                    <version>3.1.1.50.1</version>
                 </dependency>
             </dependencies>
         </profile>
@@ -120,7 +120,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>3.2.2</version>
                 <configuration>
                     <excludes>
                         <!-- 排除controller包及下面的资源 -->
@@ -131,7 +131,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.4</version>
+                <version>3.4.2</version>
                 <executions>
                     <execution>
                         <id>make-assembly</id>

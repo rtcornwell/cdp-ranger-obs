@@ -6,8 +6,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>ranger-obs</artifactId>
-        <groupId>com.huawei.mrs</groupId>
-        <version>0.1.0</version>
+        <groupId>com.huawei.mrs
+        </groupId>
+        <version>0.1.1</version>
         <relativePath>..</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>

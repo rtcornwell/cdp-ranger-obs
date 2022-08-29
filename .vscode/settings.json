@@ -1,3 +1,13 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "maven.view": "flat",
+    "maven.executable.options": "-Xlint=true" ,
+    "maven.pomfile.autoUpdateEffectivePOM": true,
+    "maven.terminal.customEnv": [
+    
+    ],
+    "maven.terminal.favorites": [
+    
+    ],
+    "maven.terminal.useJavaHome": true
 }
