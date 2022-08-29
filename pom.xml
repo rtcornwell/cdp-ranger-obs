@@ -44,7 +44,7 @@
         <hadoop.huaweicloud.version>2.8.3-hw-46</hadoop.huaweicloud.version>
         <hadoop.ext.version>8.1.2-312032</hadoop.ext.version>
     </properties>
-    <profiles>
+    <!-- <profiles>
         <profile>
             <id>mrs</id>
             <properties>
@@ -52,5 +52,5 @@
               <ranger.version>2.0.0-hw-ei-311006</ranger.version>
             </properties>
         </profile>
-    </profiles>
+    </profiles> -->
 </project>

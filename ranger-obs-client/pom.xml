@@ -1,7 +1,6 @@
 <!--
   ~ Copyright (c) Huawei Technologies Co., Ltd. 2021-2021. All rights reserved.
   -->
-
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
@@ -14,9 +13,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ranger-obs-client</artifactId>
     <packaging>jar</packaging>
-
     <name>ranger-obs-client</name>
-
     <dependencies>
         <dependency>
             <groupId>com.huaweicloud</groupId>
