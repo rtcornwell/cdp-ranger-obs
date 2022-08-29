@@ -19,11 +19,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.huawei.mrs</groupId>
-            <artifactId>ranger-obs-client</artifactId>
-            <version>${version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
             <version>${hadoop.version}</version>
@@ -37,6 +32,11 @@
             <groupId>org.apache.ranger</groupId>
             <artifactId>ranger-plugins-common</artifactId>
             <version>${ranger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.huawei.mrs</groupId>
+            <artifactId>ranger-obs-client</artifactId>
+            <version>${version}</version>
         </dependency>
         <dependency>
             <groupId>com.huaweicloud</groupId>
