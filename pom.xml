@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.huawei.mrs</groupId>
     <artifactId>ranger-obs</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.0</version>
     <modules>
         <module>ranger-obs-service</module>
         <module>ranger-obs-client</module>
@@ -20,28 +20,24 @@
         </snapshots>
         <id>huawei</id>
         <name>Huaweisdk</name>
-        <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk/</url>
+        <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk</url>
       </repository>
-        <repository>
-          <id>cloudera</id>
-          <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
-        </repository>
-        <repository>
-          <snapshots>
-              <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>maven2</name>
-          <url>https://repo.maven.apache.org/maven2</url>
-        </repository>  
-      </repositories> 
+      <repository>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+        <id>central</id>
+        <name>maven2</name>
+        <url>https://repo.maven.apache.org/maven2</url>
+      </repository>  
+    </repositories> 
 
-    <properties>
+      <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <hadoop.version>3.1.1</hadoop.version>
-        <ranger.version>2.1.0</ranger.version>
+        <hadoop.version>3.2.2</hadoop.version>
+        <ranger.version>2.0.0</ranger.version>
         <protobuf.version>2.5.0</protobuf.version>
         <hadoop.huaweicloud.version>2.8.3-hw-46</hadoop.huaweicloud.version>
         <hadoop.ext.version>8.1.0-310012</hadoop.ext.version>
@@ -51,8 +47,8 @@
         <profile>
             <id>mrs</id>
             <properties>
-                <hadoop.version>3.1.1-hw-ei-312032</hadoop.version>
-                <ranger.version>2.0.0-hw-ei-312032</ranger.version>
+              <hadoop.version>3.1.1-hw-ei-311006</hadoop.version>
+              <ranger.version>2.0.0-hw-ei-311006</ranger.version>
             </properties>
         </profile>
     </profiles>
