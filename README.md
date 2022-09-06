@@ -33,28 +33,37 @@ ranger-obs/ranger-obs-client/target/ranger-obs-client-0.1.0.jar
 ranger-obs/ranger-obs-plugin/target/ranger-obs-plugin-0.1.0.tar.gz
 ranger-obs/ranger-obs-service/target/ranger-obs-service-0.1.0.tar.gz
 
-Ranger-obs Plugin Install:
- (1) Unzip and extract the ranger-obs-plugin-0.1.0 .tar.gz, including the following:
+[Ranger-obs Plugin Install:]
+
+(1) Unzip and extract the ranger-obs-plugin-0.1.0 .tar.gz, including the following:
 ranger-obs-plugin-0.1.0.jar (ranger obs plugin package)
 ranger-obs.json (ranger plugin registration file)
+
 (2) Place both in the <RANGER_ADMIN_HOME> directory
 
 Place the ranger-obs-plugin-0.1.0 .jar in the /ranger-admin/ews/webapp/WEB-INF/classes/ranger-plugins/obs directory
 Note the permissions of the users and user groups of the obs directory and the ranger-obs-plugin-0.1.0-SNAPSHOT .jar
+
 (3) Restart the Ranger service
+
 (4) Register the OBS service on Ranger
-curl -v -k -urangeradmin:<password> -X POST -H "Accept:application/json" -H"Content-Type:application/json"  -d @./ranger-obs.json htps://<masterhost>:21401/service/plugins/definition
+
+curl -v -k -u<rangeradmin>:<password> -X POST -H "Accept:application/json" -H"Content-Type:application/json"  -d @./ranger-obs.json htps://<masterhost>:21401/service/plugins/definition
+
 The following display means it was successful; HTTP/1.1 200 OK
 
 (5) Create an obs service in the following directory
 	Add Keberos Users: ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@NOVALOCAL
 	Add Local users; useradd rangerobs -g hadoop -p rangerobs
 
-Ranger OBS Service Installation 
+
+[Ranger OBS Service Installation]
+
 1.	Log into master node
 (1) Add kerberos users:
 addprinc -randkey rangerobs/hadoop@NOVALOCAL
 ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@NOVALOCAL
+
 (2) Add the corresponding local user: useradd rangerobs -g hadoop -p rangerobs
 
 2.	Extract service components from ranger-obs-service-0.1.0 .tar.gz
@@ -63,20 +72,33 @@ conf to <rangeradmin_home?/ews/webapp/WEB-INF/classes/conf
 bin to <rangeradmin_home>/etc
 
 3.	 bin: Script directory
-star_rpc_server.sh: HUAWEI CLOUD MRS is integrated and used, which involves a lot ofmr.-specific related information
-start_server.sh: Open source big data cluster use
+
+	* star_rpc_server.sh: 
+
+	Cloudera is integrated and used, which involves a lot ofmr.-specific related information. make sure the following line points to the kerebos config file:-Djava.security.krb5.conf=/etc/krd5.conf
+
+	* start_server.sh: 
+	
+	Open source big data cluster use: Make sure the following path is the correct path to the haddop native libaries: native_path=/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/lib/hadoop/lib/native
+
 4.	 conf: Profile directory
+
 core-site .xml and hdfs-site .xml: Configuration files needed to access THE HDFS service(this service relies on the HDFS service)
 Ranger-obs-security.xml and ranger-obs-audit .xml: (access to the configuration file of the rangerAdmin service)
 ranger-obs.xml: (The main configuration file of the ranger-obs-service service itself)
 Kdc.conf and rangerobs.keytab, etc.: Other optional configuration files
 log4j.properties: Log configuration file
+
 5.	lib: Dependent package directory
+
 6.	Configuration: Fill in the required options according to your own environment, and the others will remain at default values
+
 (1) Core-site .xml and HDFS-site .xml configuration files:
 You can copy it from the hadoop root /etc/hadoop/directory
 Note: Configure-ranger.obs.xxx-site .xml and HDFs-site .xml configuration files forranger-obs-service do not appear
+
 (2) Ranger-obs .xml configuration file: required configuration items
+
 <!-- ranger-obs-service Kerberos -->
 <property>
 <name>ranger.obs.service.kerberos.principal</name>
@@ -88,8 +110,11 @@ Note: Configure-ranger.obs.xxx-site .xml and HDFs-site .xml configuration files 
 <value>/etc/security/keytabs/rangerobs.keytab</value>
 </property>
 
-(3) ranger-obs-security.xml configuration file: ranger.plugin.obs.policy.cache.dirxxx/ranger-obs-service-0.1.0/cache ranger.plugin.obs.policy.rest.url
+(3) ranger-obs-security.xml configuration file: 
+ranger.plugin.obs.policy.cache.dirxxx/ranger-obs-service-0.1.0/cache ranger.plugin.obs.policy.rest.url
+
 http://rangerAdminaddress: 6080
+
 7. Launch
 (1) Optional action: Edit the script start_server.sh and modify the following variables
 native_path=hadoop root/lib/native/
@@ -100,8 +125,10 @@ native_path=hadoop root/lib/native/
 
 
 ranger-obs-client installation
+
 1. Installation:
 Place the ranger-obs-client-0.1.0-SNAPSHOT .jar and the ranger-obs-client-0.1.0-SNAPSHOT-tests .jar in the hadoop-obs directory
+
 2. Configuration
 Add the following configuration key to the core-site .xml file under the hadoop component directory:
 ranger.obs.service.rpc.address: ranger-obs-service RPC service address xxxx:26900, supports configuring multiple addresses to be split by semicolons
