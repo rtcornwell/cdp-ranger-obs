@@ -53,6 +53,7 @@ curl -v -k -u<rangeradmin>:<password> -X POST -H "Accept:application/json" -H"Co
 The following display means it was successful; HTTP/1.1 200 OK
 
 (5) Create an obs service in the following directory
+
 	Add Keberos Users: ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@NOVALOCAL
 	Add Local users; useradd rangerobs -g hadoop -p rangerobs
 
