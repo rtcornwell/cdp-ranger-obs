@@ -135,39 +135,43 @@ log4j.properties: Log configuration file
 
 
 
-ranger-obs-client installation
+[ranger-obs-client installation]
 
-1. Installation:
-	
-	Place the ranger-obs-client-0.1.0-SNAPSHOT .jar and the ranger-obs-client-0.1.0-SNAPSHOT-tests .jar in the hadoop-obs directory
+	1. Installation:
 
-2. Configuration
-	Add the following configuration key to the core-site .xml file under the hadoop component directory:
-	
-	ranger.obs.service.rpc.address:<ipaddress>:26900
-		ranger-obs-service RPC service address xxxx:26900, supports configuring multiple addresses to be split by semicolons
-	ranger.obs.service.kerberos.principal：rangerobs/hadoop@NOVALOCAL
-	fs.obs.authorize.provider:org.apache.hadoop.fs.obs.security.RangerAuthorizeProvider:
-	When this parameter is configured, the hadoop-obs module will walk the rangerauthentication logic, otherwise it will not take the ranger authentication logic
+		Place the ranger-obs-client-0.1.0-SNAPSHOT .jar and the ranger-obs-client-0.1.0-SNAPSHOT-tests .jar in the hadoop-obs directory
 
-ranger-admin configuration
-	
-(1)	Enter the obs service on ranger and create a policy for a bucket. The bucket should have been created ahead
+	2. Configuration
+		Add the following configuration key to the core-site .xml file under the hadoop component directory:
 
-The relevant parameters are meanings as follows:
-	
-bucket: OBS bucket name
-path: Object path, support wildcards, note that object paths do not start with /.
-include: Indicates whether the set permission applies to path itself or to a pathother than path.
-recursive: Indicates that permissions apply not only to path, but also to childmembers under path path (i.e., recursive child members). Typically used when pathis set to a directory.
+		ranger.obs.service.rpc.address:<ipaddress>:26900
+			ranger-obs-service RPC service address xxxx:26900, supports configuring multiple addresses to be split by semicolons
+		ranger.obs.service.kerberos.principal：rangerobs/hadoop@NOVALOCAL
+		fs.obs.authorize.provider:org.apache.hadoop.fs.obs.security.RangerAuthorizeProvider:
+		When this parameter is configured, the hadoop-obs module will walk the rangerauthentication logic, 
+		otherwise it will not take the ranger authentication logic
 
-Note: For bucket root directories, because the corresponding object path is an empty string, it can only be set by the * wildcard character at present, and it is recommended that you set the permissions of the root directory only for administrators
+	ranger-admin configuration
 
-user/group: 
-User name and user group. Here is the relationship of or, that is, the user name or user group satisfies one of them, and it can have the corresponding operation permissions.
+	(1)	Enter the obs service on ranger and create a policy for a bucket. The bucket should have been created ahead
 
-Permissions：
-Read: Read operation. Corresponding to get and HEAD class operations in object storage, including downloading objects and querying object metadata.
-Write: Write operation. Corresponds to modification operations such as the PUT class in object storage, such as uploading objects.
+	The relevant parameters are meanings as follows:
+
+	bucket: OBS bucket name
+	path: Object path, support wildcards, note that object paths do not start with /.
+	include: Indicates whether the set permission applies to path itself or to a pathother than path.
+	recursive: Indicates that permissions apply not only to path, but also to childmembers under path path (i.e., recursive child members). Typically used when
+	pathis set to a directory.
+
+	Note: For bucket root directories, because the corresponding object path is an empty string, it can only be set by the * wildcard character at present, and it
+	is recommended that you set the permissions of the root directory only for administrators
+
+	user/group: 
+	User name and user group. Here is the relationship of or, that is, the user name or user group satisfies one of them, and it can have the corresponding 
+	operation permissions.
+
+	Permissions：
+	Read: Read operation. Corresponding to get and HEAD class operations in object storage, including downloading objects and querying object metadata.
+	Write: Write operation. Corresponds to modification operations such as the PUT class in object storage, such as uploading objects.
 
 
