@@ -99,32 +99,37 @@ log4j.properties: Log configuration file
 
 6.	Configuration: Fill in the required options according to your own environment, and the others will remain at default values
 
-(1) Core-site .xml and HDFS-site .xml configuration files:
-You can copy it from the hadoop root /etc/hadoop/directory
-Note: Configure-ranger.obs.xxx-site .xml and HDFs-site .xml configuration files forranger-obs-service do not appear
+	(1) Core-site .xml and HDFS-site .xml configuration files:
+	You can copy it from the hadoop root /etc/hadoop/directory
+	Note: Configure-ranger.obs.xxx-site .xml and HDFs-site .xml configuration files forranger-obs-service do not appear
 
-(2) Ranger-obs .xml configuration file: required configuration items
+	(2) Ranger-obs .xml configuration file: required configuration items
 
-<!-- ranger-obs-service Kerberos -->
-<property>
-<name>ranger.obs.service.kerberos.principal</name>
-<value>rangerobs/hadoop@NOVALOCAL</value>
-</property>
-<!-- ranger-obs-servic Kerberos  -->
-<property>
-<name>ranger.obs.service.kerberos.keytab</name>
-<value>/etc/security/keytabs/rangerobs.keytab</value>
-</property>
 
-(3) ranger-obs-security.xml configuration file: 
-ranger.plugin.obs.policy.cache.dirxxx/ranger-obs-service-0.1.0/cache ranger.plugin.obs.policy.rest.url
+		<!-- ranger-obs-service Kerberos -->
+		<property>
+		<name>ranger.obs.service.kerberos.principal</name>
+		<value>rangerobs/hadoop@NOVALOCAL</value>
+		</property>
+		<!-- ranger-obs-servic Kerberos  -->
+		<property>
+		<name>ranger.obs.service.kerberos.keytab</name>
+		<value>/etc/security/keytabs/rangerobs.keytab</value>
+		</property>
 
-http://rangerAdminaddress: 6080
+	(3) ranger-obs-security.xml configuration file: 
+
+		ranger.plugin.obs.policy.cache.dirxxx/ranger-obs-service-0.1.0/cache ranger.plugin.obs.policy.rest.url
+
+		http://<rangerAdminaddress>:6080
 
 7. Launch
-(1) Optional action: Edit the script start_server.sh and modify the following variables
-native_path=hadoop root/lib/native/
-(2) Start: nohup ./start_server.sh &
+	
+	(1) Optional action: Edit the script start_server.sh and modify the following variables
+
+	native_path=hadoop root/lib/native/
+
+	(2) Start: nohup ./start_server.sh &
 
 
 
@@ -133,18 +138,24 @@ native_path=hadoop root/lib/native/
 ranger-obs-client installation
 
 1. Installation:
-Place the ranger-obs-client-0.1.0-SNAPSHOT .jar and the ranger-obs-client-0.1.0-SNAPSHOT-tests .jar in the hadoop-obs directory
+	
+	Place the ranger-obs-client-0.1.0-SNAPSHOT .jar and the ranger-obs-client-0.1.0-SNAPSHOT-tests .jar in the hadoop-obs directory
 
 2. Configuration
-Add the following configuration key to the core-site .xml file under the hadoop component directory:
-ranger.obs.service.rpc.address: ranger-obs-service RPC service address xxxx:26900, supports configuring multiple addresses to be split by semicolons
-ranger.obs.service.kerberos.principal：rangerobs/hadoop@NOVALOCAL
-fs.obs.authorize.provider:org.apache.hadoop.fs.obs.security.RangerAuthorizeProvider: When this parameter is configured, the hadoop-obs module will walk the rangerauthentication logic, otherwise it will not take the ranger authentication logic
+	Add the following configuration key to the core-site .xml file under the hadoop component directory:
+	
+	ranger.obs.service.rpc.address:<ipaddress>:26900
+		ranger-obs-service RPC service address xxxx:26900, supports configuring multiple addresses to be split by semicolons
+	ranger.obs.service.kerberos.principal：rangerobs/hadoop@NOVALOCAL
+	fs.obs.authorize.provider:org.apache.hadoop.fs.obs.security.RangerAuthorizeProvider:
+	When this parameter is configured, the hadoop-obs module will walk the rangerauthentication logic, otherwise it will not take the ranger authentication logic
 
 ranger-admin configuration
+	
 (1)	Enter the obs service on ranger and create a policy for a bucket. The bucket should have been created ahead
 
 The relevant parameters are meanings as follows:
+	
 bucket: OBS bucket name
 path: Object path, support wildcards, note that object paths do not start with /.
 include: Indicates whether the set permission applies to path itself or to a pathother than path.
