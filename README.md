@@ -36,26 +36,32 @@ ranger-obs/ranger-obs-service/target/ranger-obs-service-0.1.0.tar.gz
 [Ranger-obs Plugin Install:]
 
 (1) Unzip and extract the ranger-obs-plugin-0.1.0 .tar.gz, including the following:
-ranger-obs-plugin-0.1.0.jar (ranger obs plugin package)
-ranger-obs.json (ranger plugin registration file)
+
+	ranger-obs-plugin-0.1.0.jar (ranger obs plugin package)
+	ranger-obs.json (ranger plugin registration file)
 
 (2) Place both in the <RANGER_ADMIN_HOME> directory
 
-Place the ranger-obs-plugin-0.1.0 .jar in the /ranger-admin/ews/webapp/WEB-INF/classes/ranger-plugins/obs directory
-Note the permissions of the users and user groups of the obs directory and the ranger-obs-plugin-0.1.0-SNAPSHOT .jar
+	Place the ranger-obs-plugin-0.1.0 .jar in the /ranger-admin/ews/webapp/WEB-INF/classes/ranger-plugins/obs directory
+	Note the permissions of the users and user groups of the obs directory and the ranger-obs-plugin-0.1.0-SNAPSHOT .jar
 
 (3) Restart the Ranger service
 
 (4) Register the OBS service on Ranger
 
-curl -v -k -u<rangeradmin>:<password> -X POST -H "Accept:application/json" -H"Content-Type:application/json"  -d @./ranger-obs.json htps://<masterhost>:21401/service/plugins/definition
+	curl -v -k -u<rangeradmin>:<password> -X POST -H "Accept:application/json" -H"Content-Type:application/json"  -d @./ranger-obs.json htps://<masterhost>:21401/service/plugins/definition
 
-The following display means it was successful; HTTP/1.1 200 OK
+	Note: The following display means it was successful; HTTP/1.1 200 OK
 
 (5) Create an obs service in the following directory
 
-	Add Keberos Users: ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@NOVALOCAL
-	Add Local users; useradd rangerobs -g hadoop -p rangerobs
+	Add Keberos Users: 
+	
+		ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@NOVALOCAL
+		
+	Add Local users: 
+	
+		useradd rangerobs -g hadoop -p rangerobs
 
 
 [Ranger OBS Service Installation]
@@ -81,19 +87,27 @@ The following display means it was successful; HTTP/1.1 200 OK
 
 	* star_rpc_server.sh: 
 
-	Cloudera is integrated and used, which involves a lot ofmr.-specific related information. make sure the following line points to the kerebos config file:-Djava.security.krb5.conf=/etc/krd5.conf
+	Cloudera is integrated and used, which involves a lot ofmr.-specific related information. make sure the following line points to the kerebos config file:
+	
+		-Djava.security.krb5.conf=/etc/krd5.conf
 
 	* start_server.sh: 
 	
-	Open source big data cluster use: Make sure the following path is the correct path to the haddop native libaries: native_path=/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/lib/hadoop/lib/native
+	Open source big data cluster use: Make sure the following path is the correct path to the haddop native libaries: 
+	
+		native_path=/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/lib/hadoop/lib/native
 
 4.	 conf: Profile directory
 
-core-site .xml and hdfs-site .xml: Configuration files needed to access THE HDFS service(this service relies on the HDFS service)
-Ranger-obs-security.xml and ranger-obs-audit .xml: (access to the configuration file of the rangerAdmin service)
-ranger-obs.xml: (The main configuration file of the ranger-obs-service service itself)
-Kdc.conf and rangerobs.keytab, etc.: Other optional configuration files
-log4j.properties: Log configuration file
+	core-site .xml and hdfs-site .xml: Configuration files needed to access THE HDFS service(this service relies on the HDFS service)
+
+	Ranger-obs-security.xml and ranger-obs-audit .xml: (access to the configuration file of the rangerAdmin service)
+
+	ranger-obs.xml: (The main configuration file of the ranger-obs-service service itself)
+
+	Kdc.conf and rangerobs.keytab, etc.: Other optional configuration files
+
+	log4j.properties: Log configuration file
 
 5.	lib: Dependent package directory
 
