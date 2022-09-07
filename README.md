@@ -61,16 +61,21 @@ The following display means it was successful; HTTP/1.1 200 OK
 [Ranger OBS Service Installation]
 
 1.	Log into master node
-(1) Add kerberos users:
-addprinc -randkey rangerobs/hadoop@NOVALOCAL
-ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@NOVALOCAL
+	
+	(1) Add kerberos users:
 
-(2) Add the corresponding local user: useradd rangerobs -g hadoop -p rangerobs
+	addprinc -randkey rangerobs/hadoop@NOVALOCAL
+	ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@NOVALOCAL
+
+	(2) Add the corresponding local user:
+
+	useradd rangerobs -g hadoop -p rangerobs
 
 2.	Extract service components from ranger-obs-service-0.1.0 .tar.gz
-lib to <rangeradmin_home>/ews/webapp/WEB-INF/lib
-conf to <rangeradmin_home?/ews/webapp/WEB-INF/classes/conf
-bin to <rangeradmin_home>/etc
+	
+	lib to <rangeradmin_home>/ews/webapp/WEB-INF/lib
+	conf to <rangeradmin_home?/ews/webapp/WEB-INF/classes/conf
+	bin to <rangeradmin_home>/etc
 
 3.	 bin: Script directory
 
