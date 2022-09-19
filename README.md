@@ -42,46 +42,44 @@ ranger-obs/ranger-obs-service/target/ranger-obs-service-0.1.0.tar.gz
 
 (2) Place both in the <RANGER_ADMIN_HOME> directory
 
-	Place the ranger-obs-plugin-0.1.0 .jar in the /ranger-admin/ews/webapp/WEB-INF/classes/ranger-plugins/obs directory
-	Note the permissions of the users and user groups of the obs directory and the ranger-obs-plugin-0.1.0-SNAPSHOT .jar
+Place the ranger-obs-plugin-0.1.0 .jar in the <clouderahome>/ranger-admin/ews/webapp/WEB-INF/classes/ranger-plugins/obs directory
+Note the permissions of the users and user groups of the obs directory and the ranger-obs-plugin-0.1.0.jar
 
 (3) Restart the Ranger service
 
 (4) Register the OBS service on Ranger
 
-	curl -v -k -u<rangeradmin>:<password> -X POST -H "Accept:application/json" -H"Content-Type:application/json"  -d @./ranger-obs.json htps://<masterhost>:21401/service/plugins/definition
+	curl -v -k -u<rangeradmin>:<password> -H"Content-Type:application/json"  -d @./ranger-obs.json http://<masterhost>:6080/service/plugins/definition
+	
 
-	Note: The following display means it was successful; HTTP/1.1 200 OK
+ Note: The following display means it was successful; HTTP/1.1 200 OK
 
 (5) Create an obs service in the following directory
-
-	Add Keberos Users: 
-	
-		ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@NOVALOCAL
-		
-	Add Local users: 
-	
-		useradd rangerobs -g hadoop -p rangerobs
 
 
 [Ranger OBS Service Installation]
 
 1.	Log into master node
+
 	
 	(1) Add kerberos users:
 
-	addprinc -randkey rangerobs/hadoop@NOVALOCAL
-	ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@NOVALOCAL
+		addprinc -randkey rangerobs/hadoop@example.com
+	
+		ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@example.com
 
 	(2) Add the corresponding local user:
 
-	useradd rangerobs -g hadoop -p rangerobs
+		useradd rangerobs -g hadoop -p rangerobs
 
 2.	Extract service components from ranger-obs-service-0.1.0 .tar.gz
 	
-	lib to <rangeradmin_home>/ews/webapp/WEB-INF/lib
-	conf to <rangeradmin_home?/ews/webapp/WEB-INF/classes/conf
-	bin to <rangeradmin_home>/etc
+	- lib directory to <rangeradmin_home>/ews/webapp/WEB-INF/lib
+	
+	- conf directory to <rangeradmin_home?/ews/webapp/WEB-INF/classes/conf
+	
+	- bin directory to <rangeradmin_home>/etc
+	
 
 3.	 bin: Script directory
 
