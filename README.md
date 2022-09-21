@@ -86,7 +86,7 @@ Note the permissions of the users and user groups of the obs directory and the r
 
 3.	 bin: Script directory
 
-	* star_rpc_server.sh: 
+	* start_rpc_server.sh: 
 
 	Cloudera is integrated and used, which involves a lot ofmr.-specific related information. make sure the following line points to the kerebos config file:
 	
@@ -148,13 +148,7 @@ Note the permissions of the users and user groups of the obs directory and the r
 
 7. Launch
 	
-	(1) Optional action: Edit the script start_server.sh and modify the following variables
-
-	native_path=hadoop root/lib/native/
-
-	(2) Start: nohup ./start_server.sh &
-
-
+		 nohup ./start_server.sh 
 
 
 
@@ -165,12 +159,22 @@ Note the permissions of the users and user groups of the obs directory and the r
 		Place the ranger-obs-client-0.1.0-SNAPSHOT .jar and the ranger-obs-client-0.1.0-SNAPSHOT-tests .jar in the hadoop-obs directory
 
 	2. Configuration
+			
 		Add the following configuration key to the core-site .xml file under the hadoop component directory:
 
-		ranger.obs.service.rpc.address:<ipaddress>:26900
-			ranger-obs-service RPC service address xxxx:26900, supports configuring multiple addresses to be split by semicolons
-		ranger.obs.service.kerberos.principal：rangerobs/hadoop@NOVALOCAL
-		fs.obs.authorize.provider:org.apache.hadoop.fs.obs.security.RangerAuthorizeProvider:
+		<property>
+			<name>ranger.obs.service.rpc.address</name>
+			<value>ipaddress:26900</value>
+		</property>
+		<property>
+			<name>ranger.obs.service.kerberos.principal</name>
+			<value>rangerobs/hadoop@example.com</value>
+		</property>
+	        <property>
+			<name>fs.obs.authorize.provider</name>
+			<value>org.apache.hadoop.fs.obs.security.RangerAuthorizeProvider</value>
+		</property>
+				
 		When this parameter is configured, the hadoop-obs module will walk the rangerauthentication logic, 
 		otherwise it will not take the ranger authentication logic
 
