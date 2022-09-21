@@ -49,7 +49,7 @@ Note the permissions of the users and user groups of the obs directory and the r
 
 (4) Register the OBS service on Ranger
 
-	curl -u rangerobs:rangerobs -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" -k 'http://192.168.0.13:6080/service/public/v2/api/servicedef'
+	curl -u rangeradmin:<password> -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" -k 'http://<rangerhost>:6080/service/public/v2/api/servicedef'
 	
 
  Note: The following display means it was successful; HTTP/1.1 200 OK
