@@ -59,26 +59,29 @@ Note the permissions of the users and user groups of the obs directory and the r
 
 [Ranger OBS Service Installation]
 
-1.	Log into master node
+1.	Log into master node and Add kerberos and local  users:
 
+		sudo useradd rangerobs -g hadoop -p rangerobs
+                kadmin.local
+		kdadminm.local: addprinc -randkey rangerobs/hadoop@example.com
+		quit
+		mkdir /etc/security/keytabs
+		cd /etc/security/keytabs
+		ktutil
+		ktutil: addent -password -p rangerobs/hadoop@example.com -k 1 -e RC4-HMAC
+		Password for rangerobs/hadoop@example.com: rangerobs
+		ktutil: wkt rangerobs.keytab
+		ktutil: ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@example.com
+		ktutil:  quit
 	
-	(1) Add kerberos users:
-
-		addprinc -randkey rangerobs/hadoop@example.com
-	
-		ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@example.com
-
-	(2) Add the corresponding local user:
-
-		useradd rangerobs -g hadoop -p rangerobs
 
 2.	Extract service components from ranger-obs-service-0.1.0 .tar.gz
 	
-	- lib directory to <rangeradmin_home>/ews/webapp/WEB-INF/lib
+	- lib directory to /opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/lib/ranger-admin/ews/webapp/WEB-INF/lib
 	
-	- conf directory to <rangeradmin_home?/ews/webapp/WEB-INF/classes/conf
+	- conf directory to cp ranger* /opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/lib/ranger-admin/ews/webapp/WEB-INF/classes/conf
 	
-	- bin directory to <rangeradmin_home>/etc
+	- bin directory to /opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/lib/ranger-admin/bin
 	
 
 3.	 bin: Script directory
@@ -123,6 +126,7 @@ Note the permissions of the users and user groups of the obs directory and the r
 		<name>ranger.obs.service.kerberos.principal</name>
 		<value>rangerobs/hadoop@NOVALOCAL</value>
 		</property>
+		
 		<!-- ranger-obs-servic Kerberos  -->
 		<property>
 		<name>ranger.obs.service.kerberos.keytab</name>
@@ -131,9 +135,16 @@ Note the permissions of the users and user groups of the obs directory and the r
 
 	(3) ranger-obs-security.xml configuration file: 
 
-		ranger.plugin.obs.policy.cache.dirxxx/ranger-obs-service-0.1.0/cache ranger.plugin.obs.policy.rest.url
-
-		http://<rangerAdminaddress>:6080
+		 <property>
+       			 <name>ranger.plugin.obs.policy.cache.dir</name>
+      			 <value><clouderapolicycachedirectory></value>
+   		 </property> 
+		
+		<property>
+        		<name>ranger.plugin.obs.policy.rest.url</name>
+        		<value>http:/<rangeradminhlostip>:6080</value>
+   		 </property>
+  
 
 7. Launch
 	
