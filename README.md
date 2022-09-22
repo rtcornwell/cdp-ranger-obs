@@ -156,11 +156,11 @@ Note the permissions of the users and user groups of the obs directory and the r
 
 	1. Installation:
 
-		Place the ranger-obs-client-0.1.0-SNAPSHOT .jar and the ranger-obs-client-0.1.0-SNAPSHOT-tests .jar in the hadoop-obs directory
+		Place the ranger-obs-client-0.1.08 jars /opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/jars
 
 	2. Configuration
 			
-		Add the following configuration key to the core-site .xml file under the hadoop component directory:
+		Add the following configuration key to the core-site .xml file under the hadoop component directory:/etc/hadoop/conf.cloudera.hdfs
 
 		<property>
 			<name>ranger.obs.service.rpc.address</name>
@@ -178,6 +178,7 @@ Note the permissions of the users and user groups of the obs directory and the r
 		When this parameter is configured, the hadoop-obs module will walk the rangerauthentication logic, 
 		otherwise it will not take the ranger authentication logic
 
+	
 	ranger-admin configuration
 
 	(1)	Enter the obs service on ranger and create a policy for a bucket. The bucket should have been created ahead
