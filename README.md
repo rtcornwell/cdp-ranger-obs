@@ -26,7 +26,7 @@ Use the built in account "rangeradmin" for all configuration of ranger or the ac
 
 
 Source code compilation
-1.	git clone https://github.com/rtcornwell/ranger-obs
+1.	git clone https://github.com/rtcornwell/cdp-ranger-obs
 2.	mvn clean package -D maven.test.skip=true
 3.	Generate the following components using Maven in the root directory. The pom.xml file has been updated with required libraries including the HuaweiCloud libraries in maven repository.
 ranger-obs/ranger-obs-client/target/ranger-obs-client-0.1.0.jar
