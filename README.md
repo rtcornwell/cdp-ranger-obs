@@ -62,16 +62,15 @@ Note the permissions of the users and user groups of the obs directory and the r
 1.	Log into master node and Add kerberos and local  users:
 
 		sudo useradd rangerobs -g hadoop -p rangerobs
-                kadmin.local
+                sudo kadmin.local
 		kdadminm.local: addprinc -randkey rangerobs/hadoop@example.com
 		quit
-		mkdir /etc/security/keytabs
+		sudo mkdir /etc/security/keytabs
 		cd /etc/security/keytabs
-		ktutil
+		sudo ktutil
 		ktutil: addent -password -p rangerobs/hadoop@example.com -k 1 -e RC4-HMAC
 		Password for rangerobs/hadoop@example.com: rangerobs
 		ktutil: wkt rangerobs.keytab
-		ktutil: ktadd -k /etc/security/keytabs/rangerobs.keytab rangerobs/hadoop@example.com
 		ktutil:  quit
 	
 
