@@ -65,6 +65,8 @@ Note the permissions of the users and user groups of the obs directory and the r
                 sudo kadmin.local
 		kdadminm.local: addprinc -randkey rangerobs/hadoop@example.com
 		quit
+		sudo mkdir /var/lib/ranger/obs
+		sudo mkdir /var/lib/ranger/obs/policy-cache
 		sudo mkdir /etc/security/keytabs
 		cd /etc/security/keytabs
 		sudo ktutil
@@ -116,14 +118,15 @@ Note the permissions of the users and user groups of the obs directory and the r
 	(1) Core-site .xml and HDFS-site .xml configuration files:
 	You can copy it from the hadoop root /etc/hadoop/directory
 	Note: Configure-ranger.obs.xxx-site .xml and HDFs-site .xml configuration files forranger-obs-service do not appear
-
+	
+	
 	(2) Ranger-obs .xml configuration file: required configuration items
 
 
 		<!-- ranger-obs-service Kerberos -->
 		<property>
 		<name>ranger.obs.service.kerberos.principal</name>
-		<value>rangerobs/hadoop@NOVALOCAL</value>
+		<value>rangerobs/hadoop@EXAMPLE.COM</value>
 		</property>
 		
 		<!-- ranger-obs-servic Kerberos  -->
@@ -136,7 +139,7 @@ Note the permissions of the users and user groups of the obs directory and the r
 
 		 <property>
        			 <name>ranger.plugin.obs.policy.cache.dir</name>
-      			 <value><clouderapolicycachedirectory></value>
+      			 <value>/var/lib/ranger/obs/policy-cache</value>
    		 </property> 
 		
 		<property>
