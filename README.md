@@ -33,6 +33,8 @@ ranger-obs/ranger-obs-client/target/ranger-obs-client-0.1.0.jar
 ranger-obs/ranger-obs-plugin/target/ranger-obs-plugin-0.1.0.tar.gz
 ranger-obs/ranger-obs-service/target/ranger-obs-service-0.1.0.tar.gz
 
+Installation on Cloudera Server 
+
 [Ranger-obs Plugin Install:]
 
 (1) Unzip and extract the ranger-obs-plugin-0.1.0 .tar.gz, including the following:
