@@ -67,19 +67,29 @@ The ranger service is a service modules that runs as a service on the ranger hos
 ## (1) Log into ranger host and Add kerberos and local  users
 
     sudo useradd rangerobs -g hadoop -p rangerobs (this will be used by the service and the client)
+
     sudo kadmin.local
+
     kdadmin.local: addprinc -randkey rangerobs/hadoop@example.com
+
     quit
 
     sudo mkdir /var/lib/ranger/obs
+
     sudo mkdir /var/lib/ranger/obs/policy-cache
+
     sudo mkdir /etc/security/keytabs
+
     cd /etc/security/keytabs
 
     sudo ktutil
+
     ktutil: addent -password -p rangerobs/hadoop@example.com -k 1 -e RC4-HMAC
+
     Password for rangerobs/hadoop@example.com: rangerobs
+
     ktutil: wkt rangerobs.keytab
+
     ktutil: quit
 
 ## (2) Extract service components from ranger-obs-service-0.1.0 .tar.gz
