@@ -11,15 +11,21 @@ Overview of Ranger plugin for OBS service on open Telekom Cloud
 # Development Environment requirements (JAVA)
 
   Development Kits for Java
+
   JDK 1.8.0 X86_64
+
   JRE 1.8.0 X86_64
+
   Apache Maven 3.8
+
   Visual Studio Code from Microsoft
 
 # Source code compilation
 
 1. git clone <https://github.com/rtcornwell/cdp-ranger-obs>
+
 2. mvn clean package -D maven.test.skip=true
+
 3. Generate the following components using Maven in the root directory. The pom.xml file has been updated with required libraries
    including the HuaweiCloud libraries in maven repository.
 
@@ -29,12 +35,13 @@ Overview of Ranger plugin for OBS service on open Telekom Cloud
 
 # Installation on Cloudera Cluster
 
-Gather the following information from your apache ranger installation:
+**Gather the following information from your apache ranger installation:**
 
-ENV_VARS: RANGER_ADMIN_HOME
-Directory to put plugin = [RANGERADMIN_HOME]/ews/webapp/WEB-INF/classes/ranger-plugins/obs
-RANGER_ADMIN_CONF_DIR = [RANGERADMIN_HOME]/etc
-Use the built in account "rangeradmin" for all configuration of ranger or the account you setup for ranger.
+* ENV_VARS: RANGER_ADMIN_HOME
+* Directory to put plugin = [RANGERADMIN_HOME]/ews/webapp/WEB-INF/classes/ranger-plugins/obs
+* RANGER_ADMIN_CONF_DIR = [RANGERADMIN_HOME]/etc
+
+**Use the built in account "rangeradmin" for all configuration of ranger or the account you setup for ranger.**
 
 # [Ranger-obs Plugin Install]
 
@@ -43,6 +50,7 @@ The plugin is integrated into the ranger console which allows you to setup polic
 ## (1) Unzip and extract the ranger-obs-plugin-0.1.0 .tar.gz, including the following":"
 
 ranger-obs-plugin-0.1.0.jar (ranger obs plugin package)
+
 ranger-obs.json (ranger plugin registration file)
 
 ## (2) Place both in the [RANGER_ADMIN_HOME] directory
