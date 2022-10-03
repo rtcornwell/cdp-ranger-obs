@@ -2,29 +2,32 @@ Ranger Plugin for OBS Installation and Integration Instructions
 
 Overview of Ranger plugin for OBS service on open Telekom Cloud
 
-• ranger-obs-plugin: Provides a service definition plugin on the Ranger server. It provides OBS service permission control on the Ranger side; After the plug-in is deployed, users can fill in the appropriate permissions policy on the Control page of Ranger.
-• ranger-obs-service: The service provides an RPC interface that verifies permissions locally after receiving an authentication request from hadoop-obs/ranger-obs-client; It periodically synchronizes permission policies from the Ranger server
-• ranger-obs-client: Hadoop-obs integrates this plugin to forward requests that require permission validation to the ranger-obs-service
+**ranger-obs-plugin:** Provides a service definition plugin on the Ranger server. It provides OBS service permission control on the Ranger side; After the plug-in is deployed, users can fill in the appropriate permissions policy on the Control page of Ranger.
 
-Development Environment requirements (JAVA)
-Development Kits for Java
-JDK 1.8.0 X86_64
-JRE 1.8.0 X86_64
-Apache Maven 3.8
-Visual Studio Code from Microsoft
+**ranger-obs-service:** The service provides an RPC interface that verifies permissions locally after receiving an authentication request from hadoop-obs/ranger-obs-client; It periodically synchronizes permission policies from the Ranger server
 
-Source code compilation
+**ranger-obs-client:** Hadoop-obs integrates this plugin to forward requests that require permission validation to the ranger-obs-service
+
+# Development Environment requirements (JAVA)
+
+  Development Kits for Java
+  JDK 1.8.0 X86_64
+  JRE 1.8.0 X86_64
+  Apache Maven 3.8
+  Visual Studio Code from Microsoft
+
+# Source code compilation
 
 1. git clone <https://github.com/rtcornwell/cdp-ranger-obs>
 2. mvn clean package -D maven.test.skip=true
 3. Generate the following components using Maven in the root directory. The pom.xml file has been updated with required libraries
    including the HuaweiCloud libraries in maven repository.
 
- ranger-obs/ranger-obs-client/target/ranger-obs-client-0.1.0.jar
- ranger-obs/ranger-obs-plugin/target/ranger-obs-plugin-0.1.0.tar.gz
- ranger-obs/ranger-obs-service/target/ranger-obs-service-0.1.0.tar.gz
+* ranger-obs/ranger-obs-client/target/ranger-obs-client-0.1.0.jar
+* ranger-obs/ranger-obs-plugin/target/ranger-obs-plugin-0.1.0.tar.gz
+* ranger-obs/ranger-obs-service/target/ranger-obs-service-0.1.0.tar.gz
 
-Installation on Cloudera Cluster
+# Installation on Cloudera Cluster
 
 Gather the following information from your apache ranger installation:
 
@@ -51,9 +54,9 @@ Note: the permissions of the users and user groups of the obs directory and the 
 
 ## (4) Register the OBS service on Ranger, make sure you point to the ranger-obs.json full path 
 
-**curl -u [rangeradmin]:[password] -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" -k 'http://[rangerhost]:6080/service/public/v2/api/servicedef'**
+    curl -u [rangeradmin]:[password] -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" -k 'http://[rangerhost]:6080/service/public/v2/api/servicedef'
 
-**Note: The following display means it was successful; HTTP/1.1 200 OK**
+Note: The following display means it was successful; HTTP/1.1 200 OK**
 
 # [Ranger OBS Service Installation]
 
@@ -61,43 +64,45 @@ The ranger service is a service modules that runs as a service on the ranger hos
 
 [Setup Kerberos accounts] (Kerebos should already be installed on a kerberos server)
 
-(1) Log into ranger host and Add kerberos and local  users:.
+## (1) Log into ranger host and Add kerberos and local  users
 
-  sudo useradd rangerobs -g hadoop -p rangerobs (this will be used by the service and the client)
-  sudo kadmin.local
-  kdadmin.local: addprinc -randkey rangerobs/hadoop@example.com
-  quit
-  sudo mkdir /var/lib/ranger/obs
-  sudo mkdir /var/lib/ranger/obs/policy-cache
-  sudo mkdir /etc/security/keytabs
-  cd /etc/security/keytabs
-  sudo ktutil
-  ktutil: addent -password -p rangerobs/hadoop@example.com -k 1 -e RC4-HMAC
-  Password for rangerobs/hadoop@example.com: rangerobs
-  ktutil: wkt rangerobs.keytab
-  ktutil:  quit
+    sudo useradd rangerobs -g hadoop -p rangerobs (this will be used by the service and the client)
+    sudo kadmin.local
+    kdadmin.local: addprinc -randkey rangerobs/hadoop@example.com
+    quit
 
-(2) Extract service components from ranger-obs-service-0.1.0 .tar.gz.
+    sudo mkdir /var/lib/ranger/obs
+    sudo mkdir /var/lib/ranger/obs/policy-cache
+    sudo mkdir /etc/security/keytabs
+    cd /etc/security/keytabs
 
-  copy lib directory to [rangerhome]/ews/webapp/WEB-INF/lib
+    sudo ktutil
+    ktutil: addent -password -p rangerobs/hadoop@example.com -k 1 -e RC4-HMAC
+    Password for rangerobs/hadoop@example.com: rangerobs
+    ktutil: wkt rangerobs.keytab
+    ktutil: quit
 
-  conf directory to cp ranger* [rangerhome]/ews/webapp/WEB-INF/classes/conf
+## (2) Extract service components from ranger-obs-service-0.1.0 .tar.gz
 
-  bin directory to: [rangeradminhome]/bin
+* copy lib directory to [rangerhome]/ews/webapp/WEB-INF/lib
 
-(3) bin: Script directory.
+* conf directory to cp ranger* [rangerhome]/ews/webapp/WEB-INF/classes/conf
 
-   in the start_rpc_server.sh:
+* bin directory to: [rangeradminhome]/bin
 
-   make sure the following line points to the kerebos config file:  -Djava.security.krb5.conf=/etc/krb5.conf 
+## (3) bin: Script directory
 
-   In the start_server.sh:
+    in the start_rpc_server.sh:
 
-     Make sure the following path is the correct path to the Hadoop native libraries: 
+      make sure the following line points to the kerebos config file:  -Djava.security.krb5.conf=/etc/krb5.conf 
 
-     native_path=/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/lib/hadoop/lib/native
+    In the start_server.sh:
 
-(4) conf: Profile directory.
+      Make sure the following path is the correct path to the Hadoop native libraries: 
+
+      native_path=/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/lib/hadoop/lib/native
+
+## (4) conf: Profile directory
 
    core-site .xml and hdfs-site .xml: Configuration files needed to access THE HDFS service(this service relies on the HDFS service)
 
@@ -109,9 +114,9 @@ The ranger service is a service modules that runs as a service on the ranger hos
 
    log4j.properties: Log configuration file
 
-(5) lib: Dependent package directory
+## (5) lib: Dependent package directory
 
-(6) Configuration: Fill in the required options according to your own environment, and the others will remain at default values
+## (6) Configuration: Fill in the required options according to your own environment, and the others will remain at default values
 
    (1) Core-site .xml and HDFS-site .xml configuration files: You can copy it from the hadoop root /etc/hadoop/directory
        Note: Configure-ranger.obs.xxx-site .xml and HDFs-site .xml configuration files for ranger-obs-service do not appear
