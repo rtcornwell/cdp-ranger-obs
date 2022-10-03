@@ -14,14 +14,6 @@
     <url>http://maven.apache.org</url>
     <repositories>
       <repository>
-        <snapshots>
-            <enabled>false</enabled>
-        </snapshots>
-        <id>huawei</id>
-        <name>Huaweisdk</name>
-        <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk</url>
-      </repository>
-      <repository>
         <id>cloudera</id>
         <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
       </repository> 
@@ -32,7 +24,15 @@
         <id>central</id>
         <name>maven2</name>
         <url>https://repo.maven.apache.org/maven2</url>
-      </repository>  
+      </repository> 
+      <repository>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+        <id>huawei</id>
+        <name>Huaweisdk</name>
+        <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk</url>
+      </repository> 
     </repositories> 
       <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -48,8 +48,8 @@
         <profile>
             <id>mrs</id>
             <properties>
-              <hadoop.version>3.1.1-hw-ei-311006</hadoop.version>
-              <ranger.version>2.0.0-hw-ei-311006</ranger.version>
+              <hadoop.version>3.1.1.7.1.7.1000-141</hadoop.version>
+              <ranger.version>2.1.0.7.1.7.1000-141</ranger.version>
             </properties>
         </profile>
     </profiles> -->
