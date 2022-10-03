@@ -1,12 +1,17 @@
-Ranger Plugin for OBS Installation and Integration Instructions
+# Ranger Plugin for OBS Installation and Integration Instructions
 
 Overview of Ranger plugin for OBS service on open Telekom Cloud
+
+![image](https://user-images.githubusercontent.com/16845371/193598831-b8431450-0f09-462c-b477-604cc02d6452.png)
+
 
 **ranger-obs-plugin:** Provides a service definition plugin on the Ranger server. It provides OBS service permission control on the Ranger side; After the plug-in is deployed, users can fill in the appropriate permissions policy on the Control page of Ranger.
 
 **ranger-obs-service:** The service provides an RPC interface that verifies permissions locally after receiving an authentication request from hadoop-obs/ranger-obs-client; It periodically synchronizes permission policies from the Ranger server
 
 **ranger-obs-client:** Hadoop-obs integrates this plugin to forward requests that require permission validation to the ranger-obs-service
+
+
 
 # Development Environment requirements (JAVA)
 
