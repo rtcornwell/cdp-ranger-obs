@@ -22,7 +22,7 @@ Overview of Ranger plugin for OBS service on open Telekom Cloud
 
 # Source code compilation
 
-1. git clone <https://github.com/rtcornwell/cdp-ranger-obs>
+1. git clone "https://github.com/rtcornwell/cdp-ranger-obs"
 
 2. mvn clean package -D maven.test.skip=true
 
@@ -55,14 +55,14 @@ ranger-obs.json (ranger plugin registration file)
 
 ## (2) Place both in the [RANGER_ADMIN_HOME] directory
 
-Place the ranger-obs-plugin-0.1.0 .jar in the [[rangeradminhome]/ews/webapp/WEB-INF/classes/ranger-plugins/obs] directory. Create it if it doesn’t exist
+Place the ranger-obs-plugin-0.1.0 .jar in the {rangeradminhome}/ews/webapp/WEB-INF/classes/ranger-plugins/obs] directory. Create it if it doesn’t exist
 Note: the permissions of the users and user groups of the obs directory and the ranger-obs-plugin-0.1.0.jar
 
 ## (3) Restart the Ranger service
 
 ## (4) Register the OBS service on Ranger, make sure you point to the ranger-obs.json full path 
 
-    curl -u [rangeradmin]:[password] -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" -k 'http://[rangerhost]:6080/service/public/v2/api/servicedef'
+    curl -u {rangeradmin}:{password} -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" -k 'http://{rangerhost}:6080/service/public/v2/api/servicedef'
 
 Note: The following display means it was successful; HTTP/1.1 200 OK**
 
