@@ -123,13 +123,13 @@ The following files will be loaded by the service when it starts so they should 
 
     in the start_rpc_server.sh:
 
-      make sure the following line points to the kerebos config file:  -Djava.security.krb5.conf=/etc/krb5.conf 
+      make sure the following line points to the kerebos config file:  -Djava.security.krb5.conf=/etc/krb5kdc/kdc.conf 
 
     In the start_server.sh:
 
       Make sure the following path is the correct path to the Hadoop native libraries: 
 
-      native_path=/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/lib/hadoop/lib/native
+      native_path=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native
 
 ## (4) conf: Profile directory
 
