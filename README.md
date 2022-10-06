@@ -45,7 +45,7 @@ Overview of Ranger plugin for OBS service on open Telekom Cloud
 
 **Use the built in account "rangeradmin" for all configuration of ranger or the account you setup for ranger.**
 
-# Ranger-obs Plugin Install
+# [Ranger-obs Plugin Install]
 
 The plugin is integrated into the ranger console which allows you to setup policies
 
@@ -68,9 +68,18 @@ Note: the permissions of the users and user groups of the obs directory and the 
 
 Note: The following display means it was successful; HTTP/1.1 200 OK**
 
+
+
 # [Ranger OBS Service Installation]
 
 The ranger service is a service modules that runs as a service on the ranger host with it’s own url and ports. The calls to access OBS fiules go through this service. The services loads the policies from the plugin.
+
+The following files will be loaded by the service when it starts so they should be complete and in the configuration directory of the service
+
+ ranger-obs.xml
+ core-site.xml - Copy from ranger conf directory
+ hdfs-site.xml - copy from Hdfs conf directory
+ hadoop-policy.xml - copy from hadoop conf directory
 
 [Setup Kerberos accounts] (Kerebos should already be installed on a kerberos server)
 
@@ -138,9 +147,12 @@ The ranger service is a service modules that runs as a service on the ranger hos
 
 ## (6) Configuration: Fill in the required options according to your own environment, and the others will remain at default values
 
-   (1) Core-site .xml and HDFS-site .xml configuration files: You can copy it from the hadoop root /etc/hadoop/directory
-       Note: Configure-ranger.obs.xxx-site .xml and HDFs-site .xml configuration files for ranger-obs-service do not appear
+   (1) mkdir /etc/obs/conf
 
+   (2) copy Core-site.xml and HDFS-site.xml configuration files from the hadoop root /etc/hadoop/conf to /etc/obs/conf
+   
+   (3) place the ranger-obs.xml, ranger-obs-security.xml
+       
    (2) Ranger-obs .xml configuration file: required configuration items
   
   <!-- ranger-obs-service Kerberos -->
