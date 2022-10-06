@@ -80,10 +80,17 @@ The following files will be loaded by the service when it starts so they should 
  core-site.xml - Copy from ranger conf directory
  hdfs-site.xml - copy from Hdfs conf directory
  hadoop-policy.xml - copy from hadoop conf directory
+ 
+ ## (1) Extract service components from ranger-obs-service-0.1.0.tar.gz
+
+* extract ranger-obs-service-0.1.0.tar.gz to /lib/opt/cloudera/parcels/CDH/lib/ranger-obs-plugin
+
+* mkdir /var/lib/ranger/obs/policy-cache
+
 
 [Setup Kerberos accounts] (Kerebos should already be installed on a kerberos server)
 
-## (1) Log into ranger host and Add kerberos and local  users
+## (2) Log into ranger host and Add kerberos and local  users
 
     sudo useradd rangerobs -g hadoop -p rangerobs (this will be used by the service and the client)
 
@@ -110,14 +117,6 @@ The following files will be loaded by the service when it starts so they should 
     ktutil: wkt rangerobs.keytab
 
     ktutil: quit
-
-## (2) Extract service components from ranger-obs-service-0.1.0 .tar.gz
-
-* copy lib directory to [rangerhome]/ews/webapp/WEB-INF/lib
-
-* conf directory to cp ranger* [rangerhome]/ews/webapp/WEB-INF/classes/conf
-
-* bin directory to: [rangeradminhome]/bin
 
 ## (3) bin: Script directory
 
