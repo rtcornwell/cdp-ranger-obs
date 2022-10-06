@@ -66,7 +66,11 @@ Note: the permissions of the users and user groups of the obs directory and the 
 
     curl -u {rangeradmin}:{password} -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" -k 'http://{rangerhost}:6080/service/public/v2/api/servicedef'
 
-Note: The following display means it was successful; HTTP/1.1 200 OK**
+##Successful Registration
+
+curl -u admin:passat12 -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" - k 'http://192.168.0.169:6080/service/public/v2/api/servicedef' 
+
+{"id":204,"guid":"0d047247-bafe-4cf8-8e9b-d5d377284b2g","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1665059305799,"updateTime":1665059305799,"version":1,"name":"obs","displayName":"obs","implClass":"org.apache.ranger.obs.RangerObsService","label":"OBS","description":"OBS","options":{"enableDenyAndExceptionsInPolicies":"true"},"configs":[],"resources":[{"itemId":1,"name":"bucket","type":"string","level":10,"mandatory":true,"lookupSupported":false,"recursiveSupported":false,"excludesSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":"true","ignoreCase":"false"},"validationRegEx":"","validationMessage":"","uiHint":"","label":"Bucket","description":"Bucket Name","accessTypeRestrictions":[],"isValidLeaf":false},{"itemId":2,"name":"path","type":"string","level":20,"parent":"bucket","mandatory":true,"lookupSupported":true,"recursiveSupported":true,"excludesSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher","matcherOptions":{"wildCard":"true","ignoreCase":"false"},"validationRegEx":"","validationMessage":"","uiHint":"","label":"Path","description":"OBS Path, Should Not Start With /, exp. aaa/b.txt","accessTypeRestrictions":[],"isValidLeaf":true}],"accessTypes":[{"itemId":1,"name":"read","label":"Read","impliedGrants":[]},{"itemId":2,"name":"write","label":"Write","impliedGrants":[]}],"policyConditions":[],"contextEnrichers":[],"enums":[],"dataMaskDef":{"maskTypes":[],"accessTypes":[],"resources":[]},"rowFilterDef":{"accessTypes":[],"resources":[]}}root@cloudera-cdp:/home/ubuntu/cdp-ranger-obs/ranger-obs-plugin/target/ranger-obs-plugin-0.1.0#
 
 
 
