@@ -45,7 +45,7 @@ Overview of Ranger plugin for OBS service on open Telekom Cloud
 
 **Use the built in account "rangeradmin" for all configuration of ranger or the account you setup for ranger.**
 
-# Ranger-obs Plugin Install
+# [Ranger-obs Plugin Install]
 
 The plugin is integrated into the ranger console which allows you to setup policies
 
@@ -66,15 +66,36 @@ Note: the permissions of the users and user groups of the obs directory and the 
 
     curl -u {rangeradmin}:{password} -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" -k 'http://{rangerhost}:6080/service/public/v2/api/servicedef'
 
-Note: The following display means it was successful; HTTP/1.1 200 OK**
+##Successful Registration
+
+curl -u xxxxx:xxxxx -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" - k 'http://192.168.0.169:6080/service/public/v2/api/servicedef' 
+
+{"id":204,"guid":"0d047247-bafe-4cf8-8e9b-d5d377284b2g","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1665059305799,"updateTime":1665059305799,"version":1,"name":"obs","displayName":"obs","implClass":"org.apache.ranger.obs.RangerObsService","label":"OBS","description":"OBS","options":{"enableDenyAndExceptionsInPolicies":"true"},"configs":[],"resources":[{"itemId":1,"name":"bucket","type":"string","level":10,"mandatory":true,"lookupSupported":false,"recursiveSupported":false,"excludesSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":"true","ignoreCase":"false"},"validationRegEx":"","validationMessage":"","uiHint":"","label":"Bucket","description":"Bucket Name","accessTypeRestrictions":[],"isValidLeaf":false},{"itemId":2,"name":"path","type":"string","level":20,"parent":"bucket","mandatory":true,"lookupSupported":true,"recursiveSupported":true,"excludesSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher","matcherOptions":{"wildCard":"true","ignoreCase":"false"},"validationRegEx":"","validationMessage":"","uiHint":"","label":"Path","description":"OBS Path, Should Not Start With /, exp. aaa/b.txt","accessTypeRestrictions":[],"isValidLeaf":true}],"accessTypes":[{"itemId":1,"name":"read","label":"Read","impliedGrants":[]},{"itemId":2,"name":"write","label":"Write","impliedGrants":[]}],"policyConditions":[],"contextEnrichers":[],"enums":[],"dataMaskDef":{"maskTypes":[],"accessTypes":[],"resources":[]},"rowFilterDef":{"accessTypes":[],"resources":[]}}root@cloudera-cdp:/home/ubuntu/cdp-ranger-obs/ranger-obs-plugin/target/ranger-obs-plugin-0.1.0#
+
+![image](https://github.com/rtcornwell/cdp-ranger-obs/blob/02644d982deea19924ef0e7e2a644a54fe8ac2a7/servicescreen.png)
+
 
 # [Ranger OBS Service Installation]
 
 The ranger service is a service modules that runs as a service on the ranger host with it’s own url and ports. The calls to access OBS fiules go through this service. The services loads the policies from the plugin.
 
+The following files will be loaded by the service when it starts so they should be complete and in the configuration directory of the service
+
+ ranger-obs.xml
+ core-site.xml - Copy from ranger conf directory
+ hdfs-site.xml - copy from Hdfs conf directory
+ hadoop-policy.xml - copy from hadoop conf directory
+ 
+ ## (1) Extract service components from ranger-obs-service-0.1.0.tar.gz
+
+* extract ranger-obs-service-0.1.0.tar.gz to /lib/opt/cloudera/parcels/CDH/lib/ranger-obs-plugin
+
+* mkdir /var/lib/ranger/obs/policy-cache
+
+
 [Setup Kerberos accounts] (Kerebos should already be installed on a kerberos server)
 
-## (1) Log into ranger host and Add kerberos and local  users
+## (2) Log into ranger host and Add kerberos and local  users
 
     sudo useradd rangerobs -g hadoop -p rangerobs (this will be used by the service and the client)
 
@@ -102,6 +123,7 @@ The ranger service is a service modules that runs as a service on the ranger hos
 
     ktutil: quit
 
+<<<<<<< HEAD
 ## (2) Extract service components from ranger-obs-service-0.1.0 .tar.gz
 
   sudo mkdir /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin
@@ -117,17 +139,19 @@ The ranger service is a service modules that runs as a service on the ranger hos
 
 * bin directory to /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/bin
 
+=======
+>>>>>>> 86d6142fc58fb3be044ba350da7c0d4c5c516eb1
 ## (3) bin: Script directory
 
     in the start_rpc_server.sh:
 
-      make sure the following line points to the kerebos config file:  -Djava.security.krb5.conf=/etc/krb5.conf 
+      make sure the following line points to the kerebos config file:  -Djava.security.krb5.conf=/etc/krb5kdc/kdc.conf 
 
     In the start_server.sh:
 
       Make sure the following path is the correct path to the Hadoop native libraries: 
 
-      native_path=/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/lib/hadoop/lib/native
+      native_path=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native
 
 ## (4) conf: Profile directory
 
@@ -145,9 +169,19 @@ The ranger service is a service modules that runs as a service on the ranger hos
 
 ## (6) Configuration: Fill in the required options according to your own environment, and the others will remain at default values
 
+<<<<<<< HEAD
 (1) Core-site .xml and HDFS-site .xml configuration files: You can copy it from the hadoop root /etc/hadoop/directory
 
 (2) Ranger-obs.xml configuration file: required configuration items. Change these settings in the file. The java module serverconstants.java reads and sets all these parameters.
+=======
+   (1) mkdir /etc/obs/conf
+
+   (2) copy Core-site.xml and HDFS-site.xml configuration files from the hadoop root /etc/hadoop/conf to /etc/obs/conf
+   
+   (3) place the ranger-obs.xml, ranger-obs-security.xml
+       
+   (2) Ranger-obs .xml configuration file: required configuration items
+>>>>>>> 86d6142fc58fb3be044ba350da7c0d4c5c516eb1
   
   <!-- ranger-obs-service Kerberos -->
 
