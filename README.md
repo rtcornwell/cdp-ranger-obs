@@ -55,7 +55,7 @@ ranger-obs-plugin-0.1.0.jar (ranger obs plugin package)
 
 ranger-obs.json (ranger plugin registration file)
 
-## (2) Place both in the [RANGER_ADMIN_HOME] directory
+## (2) Place both in the directory
 
 Place the ranger-obs-plugin-0.1.0 .jar in the {rangeradminhome}/ews/webapp/WEB-INF/classes/ranger-plugins/obs] directory. Create it if it doesn’t exist
 Note: the permissions of the users and user groups of the obs directory and the ranger-obs-plugin-0.1.0.jar
@@ -104,11 +104,18 @@ The ranger service is a service modules that runs as a service on the ranger hos
 
 ## (2) Extract service components from ranger-obs-service-0.1.0 .tar.gz
 
-* copy lib directory to [rangerhome]/ews/webapp/WEB-INF/lib
+  sudo mkdir /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin
+  sudo mkdir /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/conf
+  sudo mkdir /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/bin
+  sudo mkdir /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/lib
+  sudo mkdir /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/log
 
-* conf directory to cp ranger* [rangerhome]/ews/webapp/WEB-INF/classes/conf
 
-* bin directory to: [rangeradminhome]/bin
+* copy lib directory to /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/lib
+
+* conf directory to /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/conf
+
+* bin directory to /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/bin
 
 ## (3) bin: Script directory
 
@@ -124,24 +131,23 @@ The ranger service is a service modules that runs as a service on the ranger hos
 
 ## (4) conf: Profile directory
 
-   core-site .xml and hdfs-site .xml: Configuration files needed to access THE HDFS service(this service relies on the HDFS service)
+   core-site .xml and hdfs-site .xml: Configuration files needed to access THE HDFS service(this service relies on the HDFS service). Copy them from the HDFS service directory
 
-   Ranger-obs-security.xml and ranger-obs-audit .xml: (access to the configuration file of the rangerAdmin service)
+   Ranger-obs-security.xml and ranger-obs-audit.xml: (access to the configuration file of the rangerAdmin service)
 
    ranger-obs.xml: (The main configuration file of the ranger-obs-service service itself)
 
-   Kdc.conf and rangerobs.keytab, etc.: Other optional configuration files
-
    log4j.properties: Log configuration file
+
+   haddop-policy.xml find a copy of it and place it in the conf folder. original copy is under /etc/hadoop/conf.cloudera.hdfs
 
 ## (5) lib: Dependent package directory
 
 ## (6) Configuration: Fill in the required options according to your own environment, and the others will remain at default values
 
-   (1) Core-site .xml and HDFS-site .xml configuration files: You can copy it from the hadoop root /etc/hadoop/directory
-       Note: Configure-ranger.obs.xxx-site .xml and HDFs-site .xml configuration files for ranger-obs-service do not appear
+(1) Core-site .xml and HDFS-site .xml configuration files: You can copy it from the hadoop root /etc/hadoop/directory
 
-   (2) Ranger-obs .xml configuration file: required configuration items
+(2) Ranger-obs.xml configuration file: required configuration items. Change these settings in the file. The java module serverconstants.java reads and sets all these parameters.
   
   <!-- ranger-obs-service Kerberos -->
 
@@ -157,7 +163,39 @@ The ranger service is a service modules that runs as a service on the ranger hos
        <value>/etc/security/keytabs/rangerobs.keytab</value>
     </property>
 
- (3) ranger-obs-security.xml configuration file:
+  <!-- ranger-obs-service-sts (OTC Token Service) -->
+
+    <property>
+        <name>ranger.obs.service.sts.enable</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>ranger.obs.service.sts.token.url</name>
+        <value>"https://iam.eu-de.otc.t-systems.com.com/v3/auth/tokens?nocatalog=true"</value>
+    </property>
+    <property>
+        <name>ranger.obs.service.sts.domain.name</name>
+        <value>OTC0000000100001497</value>
+    </property>
+    <property>
+        <name>ranger.obs.service.sts.user.name</name>
+        <value>rangerobs</value>
+    </property>
+    <property>
+        <name>ranger.obs.service.sts.user.password</name>
+        <value>rangerobs</value>
+    </property>
+    <property>
+        <name>ranger.obs.service.sts.securitytoken.url</name>
+        <value>https://iam.eu-de.otc.t-systems.com/v3.0/OS-CREDENTIAL/securitytokens</value>
+    </property>
+     <!--STS Token validity in seconds (24 Hours = 86400) -->
+    <property>
+        <name>ranger.obs.service.sts.securitytoken.duration</name>
+        <value>86400</value>
+    </property>
+
+(3) ranger-obs-security.xml configuration file:
 
     <property>
         <name>ranger.plugin.obs.policy.cache.dir</name>
@@ -166,11 +204,11 @@ The ranger service is a service modules that runs as a service on the ranger hos
   
     <property>
         <name>ranger.plugin.obs.policy.rest.url</name>
-        <value>http:/<rangeradminhlostip>:6080</value>
+        <value>http://<ip of Rangeradmint>:6080</value>
     </property>" 
 
 7.Launch
-   nohup ./start_server.sh [path to config files]
+  sudo  nohup ./start_server.sh [path to config files]
 
 # [ranger-obs-client installation]
 

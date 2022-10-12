@@ -47,7 +47,7 @@ public class ServerConstants {
     public static final String RANGER_OBS_SERVICE_STS_TOKEN_URL = "ranger.obs.service.sts.token.url";
 
     public static final String DEFAULT_RANGER_OBS_SERVICE_STS_TOKEN_URL
-        = "https://iam.myhuaweicloud.com/v3/auth/tokens?nocatalog=true";
+        = "https://iam.eu-de.otc.t-systems.com.com/v3/auth/tokens?nocatalog=true";
 
     public static final String RANGER_OBS_SERVICE_STS_DOMAIN_NAME = "ranger.obs.service.sts.domain.name";
 
@@ -58,7 +58,7 @@ public class ServerConstants {
     public static final String RANGER_OBS_SERVICE_STS_SECURITYTOKEN_URL = "ranger.obs.service.sts.securitytoken.url";
 
     public static final String DEFAULT_RANGER_OBS_SERVICE_STS_SECURITYTOKEN_URL
-        = "https://iam.myhuaweicloud.com/v3.0/OS-CREDENTIAL/securitytokens";
+        = "https://iam.eu-de.otc.t-systems.com/v3.0/OS-CREDENTIAL/securitytokens";
 
     public static final String RANGER_OBS_SERVICE_STS_SECURITYTOKEN_DURATION
         = "ranger.obs.service.sts.securitytoken.duration";

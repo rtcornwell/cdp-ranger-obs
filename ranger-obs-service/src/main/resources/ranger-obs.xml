@@ -21,11 +21,10 @@
     <!--STS相关配置-->
     <property>
         <name>ranger.obs.service.sts.enable</name>
-        <value>false</value>
+        <value>true</value>
     </property>
-    <property>
         <name>ranger.obs.service.sts.token.url</name>
-        <value></value>
+        <value>"https://iam.eu-de.otc.t-systems.com/v3/auth/tokens?nocatalog=true"</value>
     </property>
     <property>
         <name>ranger.obs.service.sts.domain.name</name>
@@ -41,11 +40,12 @@
     </property>
     <property>
         <name>ranger.obs.service.sts.securitytoken.url</name>
-        <value></value>
+        <value>https://iam.eu-de.otc.t-systems.com/v3.0/OS-CREDENTIAL/securitytokens</value>
     </property>
+    <!--STS Token validity in seconds (24 Hours = 86400) -->
     <property>
         <name>ranger.obs.service.sts.securitytoken.duration</name>
-        <value></value>
+        <value>86400</value>
     </property>
 
     <!-- kerberos相关配置-->
