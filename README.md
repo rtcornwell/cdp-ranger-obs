@@ -99,10 +99,7 @@ The following files will be loaded by the service when it starts so they should 
 
     sudo useradd rangerobs -g hadoop -p rangerobs (this will be used by the service and the client)
 
-    sudo kadmin.local
-
-    kdadmin.local: addprinc -randkey rangerobs/hadoop@example.com
-
+    
     quit
 
     sudo mkdir /var/lib/ranger/obs
@@ -110,20 +107,19 @@ The following files will be loaded by the service when it starts so they should 
     sudo mkdir /var/lib/ranger/obs/policy-cache
 
     sudo mkdir /etc/security/keytabs
-
+    
     cd /etc/security/keytabs
+    
+    sudo kadmin.local
+    kdadmin.local: addprinc -pw 'rangerobs' rangerobs/hadoop@EXAMPLE.COM
+    kdadmin.local: ktadd -norandkey -k rangerobs.keytab rangerobs/hadoop@EXAMPLE.COM
+    kdadmin.local: quit  
+    
+    kinit -kt rangerobs.keytab rangerobs/hadoop@EXAMPLE.COM
 
-    sudo ktutil
 
-    ktutil: addent -password -p rangerobs/hadoop@example.com -k 1 -e RC4-HMAC
 
-    Password for rangerobs/hadoop@example.com: rangerobs
 
-    ktutil: wkt rangerobs.keytab
-
-    ktutil: quit
-
-<<<<<<< HEAD
 ## (2) Extract service components from ranger-obs-service-0.1.0 .tar.gz
 
   sudo mkdir /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin
@@ -139,8 +135,6 @@ The following files will be loaded by the service when it starts so they should 
 
 * bin directory to /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/bin
 
-=======
->>>>>>> 86d6142fc58fb3be044ba350da7c0d4c5c516eb1
 ## (3) bin: Script directory
 
     in the start_rpc_server.sh:
