@@ -7,7 +7,7 @@ dir=$(dirname $cur_dir)
 pidFile=${ENV_INSTANCE_PID_FILE}
 
 # class path地址
-cp_path=${dir}:${dir}/lib/*:${dir}/conf
+cp_path=${dir}:${dir}/conf:${dir}/lib/*:${dir}/classes/*
 
 if [ "$1" != "" ]; then
   cp_path=$1:${cp_path}

@@ -43,6 +43,7 @@ org\apache\ranger\obs\protocol\proto\RangerObsServiceProtocolProtos$GetSTSReques
 org\apache\hadoop\security\proto\SecurityProtos$CredentialsProto.class
 org\apache\hadoop\security\proto\SecurityProtos$GetDelegationTokenRequestProtoOrBuilder.class
 org\apache\ranger\obs\protocolpb\RangerObsServiceProtocolTranslatorPB.class
+org\apache\hadoop\security\proto\SecurityProtos$CancelDelegationTokenRequestProto.class
 org\apache\ranger\obs\client\LoadBalanceRangerObsClientImpl$1.class
 org\apache\hadoop\security\proto\SecurityProtos$GetDelegationTokenRequestProto$Builder.class
 org\apache\hadoop\security\proto\SecurityProtos$RenewDelegationTokenRequestProto.class
@@ -52,6 +53,8 @@ org\apache\ranger\obs\client\RangerObsClientImpl.class
 org\apache\hadoop\security\proto\SecurityProtos$GetDelegationTokenResponseProto.class
 org\apache\ranger\obs\protocolpb\PBHelperClient.class
 org\apache\ranger\obs\client\LoadBalanceRangerObsClientImpl$4.class
+org\apache\ranger\obs\security\authorization\AccessType.class
+org\apache\ranger\obs\security\authorization\PermissionRequest.class
 org\apache\hadoop\security\proto\SecurityProtos$RenewDelegationTokenResponseProto.class
 org\apache\hadoop\security\proto\SecurityProtos$GetDelegationTokenRequestProto.class
 org\apache\hadoop\security\proto\SecurityProtos$RenewDelegationTokenRequestProto$1.class
@@ -72,6 +75,7 @@ org\apache\ranger\obs\security\token\DelegationRenewer.class
 org\apache\ranger\obs\protocol\proto\RangerObsServiceProtocolProtos$RangerObsServiceProtocol$BlockingInterface.class
 org\apache\hadoop\security\proto\SecurityProtos$CancelDelegationTokenRequestProtoOrBuilder.class
 org\apache\ranger\obs\protocol\proto\RangerObsServiceProtocolProtos$GetSTSResponseProto.class
+org\apache\ranger\obs\security\sts\GetSTSResponse.class
 org\apache\ranger\obs\client\LoadBalanceRangerObsClientImpl$3.class
 org\apache\ranger\obs\protocol\proto\RangerObsServiceProtocolProtos$GetSTSRequestProto.class
 org\apache\ranger\obs\protocol\proto\RangerObsServiceProtocolProtos$PermissionResponseProto.class
