@@ -3,7 +3,7 @@
     <parent>
         <artifactId>ranger-obs</artifactId>
         <groupId>com.huawei.mrs</groupId>
-        <version>0.1.0</version>
+        <version>0.1.1</version>
         <relativePath>..</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -51,7 +51,7 @@
         <dependency>
             <groupId>com.huawei.mrs</groupId>
             <artifactId>mrs-obs-provider</artifactId>
-            <version>3.1.1.47</version>
+            <version>3.1.1.42</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
