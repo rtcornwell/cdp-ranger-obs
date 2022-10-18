@@ -21,11 +21,11 @@ Compiled to run on Cloudewra CDP which supports these versions of components: ht
 
   JRE 1.8.0 X86_64
 
-  Apache Maven 3.8
+  Apache Maven Compiler Plugin 3.8.1
 
   Visual Studio Code from Microsoft
 
-# Source code compilation
+## Source code compilation
 
 1. git clone "https://github.com/rtcornwell/cdp-ranger-obs"
 
@@ -38,7 +38,7 @@ Compiled to run on Cloudewra CDP which supports these versions of components: ht
 * ranger-obs/ranger-obs-plugin/target/ranger-obs-plugin-0.1.0.tar.gz
 * ranger-obs/ranger-obs-service/target/ranger-obs-service-0.1.0.tar.gz
 
-# [Installation on Cloudera Cluster]
+## [Installation on Cloudera Cluster]
 
 **Gather the following information from your apache ranger installation:**
 
@@ -48,7 +48,7 @@ Compiled to run on Cloudewra CDP which supports these versions of components: ht
 
 **Use the built in account "rangeradmin" for all configuration of ranger or the account you setup for ranger.**
 
-# [Ranger-obs Plugin Install]
+## [Ranger-obs Plugin Install]
 
 The plugin is integrated into the ranger console which allows you to setup policies
 
@@ -69,7 +69,7 @@ Note: the permissions of the users and user groups of the obs directory and the 
 
     curl -u {rangeradmin}:{password} -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" -k 'http://{rangerhost}:6080/service/public/v2/api/servicedef'
 
-##Successful Registration
+## Successful Registration
 
 curl -u xxxxx:xxxxx -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" - k 'http://192.168.0.169:6080/service/public/v2/api/servicedef' 
 
@@ -78,7 +78,7 @@ curl -u xxxxx:xxxxx -X POST -d @ranger-obs.json -H "Accept: application/json" -H
 ![image](https://github.com/rtcornwell/cdp-ranger-obs/blob/02644d982deea19924ef0e7e2a644a54fe8ac2a7/servicescreen.png)
 
 
-# [Ranger OBS Service Installation]
+## [Ranger OBS Service Installation]
 
 The ranger service is a service modules that runs as a service on the ranger host with it’s own url and ports. The calls to access OBS fiules go through this service. The services loads the policies from the plugin.
 
@@ -88,29 +88,22 @@ The following files will be loaded by the service when it starts so they should 
  core-site.xml - Copy from ranger conf directory
  hdfs-site.xml - copy from Hdfs conf directory
  hadoop-policy.xml - copy from hadoop conf directory
- 
- ## (1) Extract service components from ranger-obs-service-0.1.0.tar.gz
+
+### (1) Extract service components from ranger-obs-service-0.1.0.tar.gz
 
 * extract ranger-obs-service-0.1.0.tar.gz to /lib/opt/cloudera/parcels/CDH/lib/ranger-obs-plugin
 
 * mkdir /var/lib/ranger/obs/policy-cache
 
-
 [Setup Kerberos accounts] (Kerebos should already be installed on a kerberos server)
 
-## (2) Log into ranger host and Add kerberos and local  users
+### (2) Log into ranger host and Add kerberos and local  users
 
     sudo useradd rangerobs -g hadoop -p rangerobs (this will be used by the service and the client)
 
-    
-    quit
-
     sudo mkdir /var/lib/ranger/obs
-
     sudo mkdir /var/lib/ranger/obs/policy-cache
-
     sudo mkdir /etc/security/keytabs
-    
     cd /etc/security/keytabs
     
     sudo kadmin.local
@@ -120,10 +113,7 @@ The following files will be loaded by the service when it starts so they should 
     
     kinit -kt rangerobs.keytab rangerobs/hadoop@EXAMPLE.COM
 
-
-
-
-## (2) Extract service components from ranger-obs-service-0.1.0 .tar.gz
+### (3)Extract service components from "ranger-obs-service-0.1.0.tar.gz"
 
   sudo mkdir /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin
   sudo mkdir /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/conf
@@ -131,14 +121,13 @@ The following files will be loaded by the service when it starts so they should 
   sudo mkdir /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/lib
   sudo mkdir /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/log
 
-
 * copy lib directory to /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/lib
 
 * conf directory to /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/conf
 
 * bin directory to /opt/cloudera/parcels/CDH/lib/ranger-obs-plugin/bin
 
-## (3) bin: Script directory
+### (4) bin: Script directory
 
     in the start_rpc_server.sh:
 
@@ -150,7 +139,7 @@ The following files will be loaded by the service when it starts so they should 
 
       native_path=/opt/cloudera/parcels/CDH/lib/hadoop/lib/native
 
-## (4) conf: Profile directory
+### (5) conf: Profile directory
 
    core-site .xml and hdfs-site .xml: Configuration files needed to access THE HDFS service(this service relies on the HDFS service). Copy them from the HDFS service directory
 
@@ -162,86 +151,82 @@ The following files will be loaded by the service when it starts so they should 
 
    haddop-policy.xml find a copy of it and place it in the conf folder. original copy is under /etc/hadoop/conf.cloudera.hdfs
 
-## (5) lib: Dependent package directory
+### (6) lib: Dependent package directory
 
-## (6) Configuration: Fill in the required options according to your own environment, and the others will remain at default values
+### (6) Configuration: Fill in the required options according to your own environment, and the others will remain at default values
 
-<<<<<<< HEAD
 (1) Core-site .xml and HDFS-site .xml configuration files: You can copy it from the hadoop root /etc/hadoop/directory
 
 (2) Ranger-obs.xml configuration file: required configuration items. Change these settings in the file. The java module serverconstants.java reads and sets all these parameters.
-=======
-   (1) mkdir /etc/obs/conf
 
-   (2) copy Core-site.xml and HDFS-site.xml configuration files from the hadoop root /etc/hadoop/conf to /etc/obs/conf
-   
-   (3) place the ranger-obs.xml, ranger-obs-security.xml
-       
-   (2) Ranger-obs .xml configuration file: required configuration items
->>>>>>> 86d6142fc58fb3be044ba350da7c0d4c5c516eb1
+   1. mkdir /etc/obs/conf
+   2. copy Core-site.xml and HDFS-site.xml configuration files from the hadoop root /etc/hadoop/conf to /etc/obs/conf
+   3. place the ranger-obs.xml, ranger-obs-security.xml
+   4. Ranger-obs .xml configuration file: required configuration items  
   
   <!-- ranger-obs-service Kerberos -->
 
-    <property>
-      <name>ranger.obs.service.kerberos.principal</name>
-      <value>rangerobs/hadoop@EXAMPLE.COM</value>
-    </property>
+  <property>
+    <name>ranger.obs.service.kerberos.principal</name>
+    <value>rangerobs/hadoop@EXAMPLE.COM</value>
+  </property>
 
   <!-- ranger-obs-service Kerberos  -->
 
-    <property>
-       <name>ranger.obs.service.kerberos.keytab</name>
-       <value>/etc/security/keytabs/rangerobs.keytab</value>
-    </property>
+  <property>
+      <name>ranger.obs.service.kerberos.keytab</name>
+      <value>/etc/security/keytabs/rangerobs.keytab</value>
+  </property>
 
   <!-- ranger-obs-service-sts (OTC Token Service) -->
 
-    <property>
-        <name>ranger.obs.service.sts.enable</name>
-        <value>false</value>
-    </property>
-    <property>
-        <name>ranger.obs.service.sts.token.url</name>
-        <value>"https://iam.eu-de.otc.t-systems.com.com/v3/auth/tokens?nocatalog=true"</value>
-    </property>
-    <property>
-        <name>ranger.obs.service.sts.domain.name</name>
-        <value>OTC0000000100001497</value>
-    </property>
-    <property>
-        <name>ranger.obs.service.sts.user.name</name>
-        <value>rangerobs</value>
-    </property>
-    <property>
-        <name>ranger.obs.service.sts.user.password</name>
-        <value>rangerobs</value>
-    </property>
-    <property>
-        <name>ranger.obs.service.sts.securitytoken.url</name>
-        <value>https://iam.eu-de.otc.t-systems.com/v3.0/OS-CREDENTIAL/securitytokens</value>
-    </property>
-     <!--STS Token validity in seconds (24 Hours = 86400) -->
-    <property>
-        <name>ranger.obs.service.sts.securitytoken.duration</name>
-        <value>86400</value>
-    </property>
+  <property>
+      <name>ranger.obs.service.sts.enable</name>
+      <value>false</value>
+  </property>
+  <property>
+      <name>ranger.obs.service.sts.token.url</name>
+      <value>"https://iam.eu-de.otc.t-systems.com.com/v3/auth/tokens?nocatalog=true"</value>
+  </property>
+  <property>
+      <name>ranger.obs.service.sts.domain.name</name>
+      <value>OTC0000000100001497</value>
+  </property>
+  <property>
+      <name>ranger.obs.service.sts.user.name</name>
+      <value>rangerobs</value>
+  </property>
+  <property>
+      <name>ranger.obs.service.sts.user.password</name>
+      <value>rangerobs</value>
+  </property>
+  <property>
+      <name>ranger.obs.service.sts.securitytoken.url</name>
+      <value>https://iam.eu-de.otc.t-systems.com/v3.0/OS-CREDENTIAL/securitytokens</value>
+  </property>
+    <!--STS Token validity in seconds (24 Hours = 86400) -->
+  <property>
+      <name>ranger.obs.service.sts.securitytoken.duration</name>
+      <value>86400</value>
+  </property>
 
 (3) ranger-obs-security.xml configuration file:
 
-    <property>
-        <name>ranger.plugin.obs.policy.cache.dir</name>
-        <value>/var/lib/ranger/obs/policy-cache</value>
-    </property>
-  
-    <property>
-        <name>ranger.plugin.obs.policy.rest.url</name>
-        <value>http://<ip of Rangeradmint>:6080</value>
-    </property>" 
+  <property>
+      <name>ranger.plugin.obs.policy.cache.dir</name>
+      <value>/var/lib/ranger/obs/policy-cache</value>
+  </property>
 
-7.Launch
+  <property>
+      <name>ranger.plugin.obs.policy.rest.url</name>
+      <value>http://<ip of Rangeradmint>:6080</value>
+  </property>" 
+
+### 7.Launch
+
   sudo  nohup ./start_server.sh [path to config files]
 
-# [ranger-obs-client installation]
+## [ranger-obs-client installation]
 
  1. Installation:
 
@@ -265,7 +250,7 @@ The following files will be loaded by the service when it starts so they should 
 
 When this parameter is configured, the hadoop-obs module will walk the rangerauthentication logic,otherwise it will not take the ranger authentication logic
 
-# [ranger-admin Policy configuration]
+## [ranger-admin Policy configuration]
 
  (1) Enter the obs service on ranger and create a policy for a bucket. The bucket should have been created ahead
 
