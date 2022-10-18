@@ -9,6 +9,9 @@ Overview of Ranger plugin for OBS service on open Telekom Cloud
 **ranger-obs-service:** The service provides an RPC interface that verifies permissions locally after receiving an authentication request from hadoop-obs/ranger-obs-client; It periodically synchronizes permission policies from the Ranger server
 
 **ranger-obs-client:** Hadoop-obs integrates this plugin to forward requests that require permission validation to the ranger-obs-service
+# Cloudera CDP Version 7.1.x 
+
+Compiled to run on Cloudewra CDP which supports these versions of components: https://docs.cloudera.com/cdp-private-cloud-base/7.1.3/runtime-release-notes/topics/rt-runtime-component-versions.html
 
 # Development Environment requirements (JAVA)
 

@@ -1,3 +1,4 @@
+org\apache\ranger\obs\protocolpb\RangerObsServiceProtocolPB.class
 org\apache\ranger\obs\client\LoadBalanceRangerObsClientImpl$Provider.class
 org\apache\hadoop\fs\obs\security\RangerAuthorizeProvider.class
 org\apache\ranger\obs\client\LoadBalanceRangerObsClientImpl.class
@@ -5,9 +6,11 @@ org\apache\ranger\obs\client\RangerObsClient.class
 org\apache\ranger\obs\client\LoadBalanceRangerObsClientImpl$2.class
 org\apache\ranger\obs\client\LoadBalanceRangerObsClientImpl$5.class
 org\apache\ranger\obs\client\LoadBalanceRangerObsClientImpl$ProviderCallable.class
+org\apache\ranger\obs\protocolpb\RangerObsServiceProtocolTranslatorPB.class
 org\apache\ranger\obs\client\LoadBalanceRangerObsClientImpl$1.class
 org\apache\ranger\obs\client\ClientConstants.class
 org\apache\ranger\obs\client\RangerObsClientImpl.class
+org\apache\ranger\obs\protocolpb\PBHelperClient.class
 org\apache\ranger\obs\client\LoadBalanceRangerObsClientImpl$4.class
 org\apache\ranger\obs\security\authorization\AccessType.class
 org\apache\ranger\obs\security\authorization\PermissionRequest.class
