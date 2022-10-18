@@ -52,9 +52,6 @@
   </profiles> -->
   <repositories>
     <repository>
-      <snapshots>
-          <enabled>false</enabled>
-      </snapshots>
       <id>huawei</id>
       <name>Huaweisdk</name>
       <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk</url>
@@ -64,9 +61,6 @@
       <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
     </repository> 
     <repository>
-      <snapshots>
-          <enabled>false</enabled>
-      </snapshots>
       <id>central</id>
       <name>maven2</name>
       <url>https://repo.maven.apache.org/maven2</url>

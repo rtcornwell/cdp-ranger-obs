@@ -5,7 +5,7 @@ import com.huawei.mrs.ECSMetaHolder;
 import com.huawei.mrs.EcsMeta;
 import com.huawei.mrs.IassHttpClient;
 import com.huawei.mrs.JavaSdkClient;
-import com.huawei.mrs.exception.TooManyRequestsException;
+// import com.huawei.mrs.exception.TooManyRequestsException;
 
 import com.obs.services.EcsObsCredentialsProvider;
 import com.obs.services.exception.ObsException;
@@ -110,9 +110,9 @@ public class MrsCredentialsProvider{
             try {
                 securityKey = httpclient.getKeyFromNodeCache(iamDomainUrl, userDomainName,
                     userDomainId, agencyName, metaUrl);
-            } catch (TooManyRequestsException tme) {
-                LOG.error("Too many request when get temporary security key, never try to request ecs directly");
-                throw new ObsException("Too many request when get temporary security key. " + tme.getMessage());
+            // } catch (TooManyRequestsException tme) {
+            //     LOG.error("Too many request when get temporary security key, never try to request ecs directly");
+            //     throw new ObsException("Too many request when get temporary security key. " + tme.getMessage());
             } catch (Exception e) {
                 LOG.error("Failed to get temporary security key from mrs meta server", e);
             }
