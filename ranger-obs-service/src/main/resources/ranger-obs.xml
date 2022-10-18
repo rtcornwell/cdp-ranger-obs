@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!-- This configuration File providers the parameters used in the Ranger OBS Service -->
 <configuration>
-    <!-- 设置obs service name的名字, 需要和ranger admin控制台配置的一样 -->
+    <!-- obs service name,ranger admin -->
     <property>
         <name>ranger.plugin.obs.service.name</name>
         <value>obs</value>
     </property>
-    <!--核心配置-->
-    <!--ranger-obs-service监听的服务地址-->
+    <!--ranger-obs-service-->
     <property>
         <name>ranger.obs.service.rpc.address</name>
         <value>0.0.0.0:26901</value>
     </property>
-    <!--ranger-obs-service的status http端口, 默认26900，服务会监听在0.0.0.0:26900地址!-->
+    <!--ranger-obs-service status http-->
  <property>
         <name>ranger.obs.service.sts.enable</name>
         <value>true</value>
@@ -21,8 +21,7 @@
         <name>ranger.obs.service.status.port</name>
         <value>26900</value>
     </property>
-
-    <!--STS相关配置-->
+    <!--STS--><!-- Cloud Login/Authentication Parameters For Open Telekom Cloud-->
     <property>
         <name>ranger.obs.service.sts.enable</name>
         <value>true</value>
@@ -55,8 +54,7 @@
         <name>ranger.obs.service.sts.securitytoken.duration</name>
         <value>86400</value>
     </property>
-
-    <!-- kerberos相关配置-->
+    <!-- kerberos-->
     <!-- Kerberos principal -->
     <property>
         <name>ranger.obs.service.kerberos.principal</name>
@@ -68,18 +66,18 @@
         <value>/etc/security/keytabs/rangerobs.keytab</value>
     </property>
 
-    <!--Delegation Token相关配置-->
-    <!-- delegation token中的service name,所有节点需保持一致-->
+    <!--Delegation Token-->
+    <!-- delegation token service name-->
     <property>
         <name>ranger.obs.service.dt.service.name</name>
         <value>0.0.0.0:26901</value>
     </property>
-    <!-- DelegationToken 续租间隔, 单位ms， 默认86400000(1天) -->
+    <!-- DelegationToken  -->
     <property>
         <name>ranger.obs.service.dt.renew-interval</name>
         <value>86400000</value>
     </property>
-    <!-- DelegationToken 续租间隔, 单位ms， 默认604800000(7天)-->
+    <!-- DelegationToken -->
     <property>
         <name>ranger.obs.service.dt.max-lifetime</name>
         <value>604800000</value>
