@@ -20,8 +20,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
+// import java.net.InetSocketAddress;
+// import java.net.Proxy;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,14 +34,14 @@ import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.X509TrustManager;
 
-import okhttp3.Authenticator;
-import okhttp3.Credentials;
+// import okhttp3.Authenticator;
+// import okhttp3.Credentials;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import okhttp3.Route;
+// import okhttp3.Route;
 
 /**
  * 功能描述

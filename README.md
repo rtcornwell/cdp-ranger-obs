@@ -9,11 +9,12 @@ Overview of Ranger plugin for OBS service on open Telekom Cloud
 **ranger-obs-service:** The service provides an RPC interface that verifies permissions locally after receiving an authentication request from hadoop-obs/ranger-obs-client; It periodically synchronizes permission policies from the Ranger server
 
 **ranger-obs-client:** Hadoop-obs integrates this plugin to forward requests that require permission validation to the ranger-obs-service
-# Cloudera CDP Version 7.1.x 
 
-Compiled to run on Cloudewra CDP which supports these versions of components: https://docs.cloudera.com/cdp-private-cloud-base/7.1.3/runtime-release-notes/topics/rt-runtime-component-versions.html
+## Cloudera CDP Version 7.1.x
 
-# Development Environment requirements (JAVA)
+Compiled to run on Cloudewra CDP which supports these versions of components: <https://docs.cloudera.com/cdp-private-cloud-base/7.1.3/runtime-release-notes/topics/rt-runtime-component-versions.html>
+
+## Development Environment requirements (JAVA)
 
   Development Kits for Java
 
@@ -65,18 +66,17 @@ Note: the permissions of the users and user groups of the obs directory and the 
 
 ## (3) Restart the Ranger service
 
-## (4) Register the OBS service on Ranger, make sure you point to the ranger-obs.json full path 
+## (4) Register the OBS service on Ranger, make sure you point to the ranger-obs.json full path
 
     curl -u {rangeradmin}:{password} -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" -k 'http://{rangerhost}:6080/service/public/v2/api/servicedef'
 
 ## Successful Registration
 
-curl -u xxxxx:xxxxx -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" - k 'http://192.168.0.169:6080/service/public/v2/api/servicedef' 
+curl -u xxxxx:xxxxx -X POST -d @ranger-obs.json -H "Accept: application/json" -H "Content-Type: application/json" - k 'http://192.168.0.169:6080/service/public/v2/api/servicedef'
 
 {"id":204,"guid":"0d047247-bafe-4cf8-8e9b-d5d377284b2g","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1665059305799,"updateTime":1665059305799,"version":1,"name":"obs","displayName":"obs","implClass":"org.apache.ranger.obs.RangerObsService","label":"OBS","description":"OBS","options":{"enableDenyAndExceptionsInPolicies":"true"},"configs":[],"resources":[{"itemId":1,"name":"bucket","type":"string","level":10,"mandatory":true,"lookupSupported":false,"recursiveSupported":false,"excludesSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher","matcherOptions":{"wildCard":"true","ignoreCase":"false"},"validationRegEx":"","validationMessage":"","uiHint":"","label":"Bucket","description":"Bucket Name","accessTypeRestrictions":[],"isValidLeaf":false},{"itemId":2,"name":"path","type":"string","level":20,"parent":"bucket","mandatory":true,"lookupSupported":true,"recursiveSupported":true,"excludesSupported":true,"matcher":"org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher","matcherOptions":{"wildCard":"true","ignoreCase":"false"},"validationRegEx":"","validationMessage":"","uiHint":"","label":"Path","description":"OBS Path, Should Not Start With /, exp. aaa/b.txt","accessTypeRestrictions":[],"isValidLeaf":true}],"accessTypes":[{"itemId":1,"name":"read","label":"Read","impliedGrants":[]},{"itemId":2,"name":"write","label":"Write","impliedGrants":[]}],"policyConditions":[],"contextEnrichers":[],"enums":[],"dataMaskDef":{"maskTypes":[],"accessTypes":[],"resources":[]},"rowFilterDef":{"accessTypes":[],"resources":[]}}root@cloudera-cdp:/home/ubuntu/cdp-ranger-obs/ranger-obs-plugin/target/ranger-obs-plugin-0.1.0#
 
 ![image](https://github.com/rtcornwell/cdp-ranger-obs/blob/02644d982deea19924ef0e7e2a644a54fe8ac2a7/servicescreen.png)
-
 
 ## [Ranger OBS Service Installation]
 
@@ -164,21 +164,23 @@ The following files will be loaded by the service when it starts so they should 
    3. place the ranger-obs.xml, ranger-obs-security.xml
    4. Ranger-obs .xml configuration file: required configuration items  
   
-  <!-- ranger-obs-service Kerberos -->
+  <!-- ranger-obs-service Kerberos
 
   <property>
     <name>ranger.obs.service.kerberos.principal</name>
     <value>rangerobs/hadoop@EXAMPLE.COM</value>
-  </property>
+  </property> 
+  -->
 
-  <!-- ranger-obs-service Kerberos  -->
+  <!-- ranger-obs-service Kerberos  
 
   <property>
       <name>ranger.obs.service.kerberos.keytab</name>
       <value>/etc/security/keytabs/rangerobs.keytab</value>
-  </property>
+  </property> 
+  -->
 
-  <!-- ranger-obs-service-sts (OTC Token Service) -->
+  <!-- ranger-obs-service-sts (OTC Token Service) --
 
   <property>
       <name>ranger.obs.service.sts.enable</name>
@@ -204,14 +206,18 @@ The following files will be loaded by the service when it starts so they should 
       <name>ranger.obs.service.sts.securitytoken.url</name>
       <value>https://iam.eu-de.otc.t-systems.com/v3.0/OS-CREDENTIAL/securitytokens</value>
   </property>
-    <!--STS Token validity in seconds (24 Hours = 86400) -->
+  --
+    <!--STS Token validity in seconds (24 Hours = 86400) --
   <property>
       <name>ranger.obs.service.sts.securitytoken.duration</name>
       <value>86400</value>
   </property>
+-->
 
 (3) ranger-obs-security.xml configuration file:
 
+ <!-- 
+ 
   <property>
       <name>ranger.plugin.obs.policy.cache.dir</name>
       <value>/var/lib/ranger/obs/policy-cache</value>
@@ -220,8 +226,8 @@ The following files will be loaded by the service when it starts so they should 
   <property>
       <name>ranger.plugin.obs.policy.rest.url</name>
       <value>http://<ip of Rangeradmint>:6080</value>
-  </property>" 
-
+  </property>"
+-->
 ### 7.Launch
 
   sudo  nohup ./start_server.sh [path to config files]

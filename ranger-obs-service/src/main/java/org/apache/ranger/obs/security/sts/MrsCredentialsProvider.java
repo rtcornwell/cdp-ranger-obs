@@ -32,7 +32,7 @@ public class MrsCredentialsProvider{
     private final String NODE_CACHE_ENABLE = "fs.obs.auth.node-cache.enable";
     private final String NODE_CACHE_SHORT_CIRCUIT = "fs.obs.auth.node-cache-short-circuit.enable";
     private final String MRS_META_URL = "fs.obs.mrs.meta.url";
-    private final String ECS_MEAT_URL = "fs.obs.ecs.meta.url";
+    // private final String ECS_MEAT_URL = "fs.obs.ecs.meta.url";
     private final String OBTAIN_KEY_MAX_RETRY = "mrs.provider.key.max.retry";
     private final int DEFAULT_OBTAIN_KEY_MAX_RETRY = 3;
     private String agencyMappingLocalPath;
