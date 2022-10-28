@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+<assembly> xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/2.4"
           xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/2.4 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
 
@@ -29,12 +30,12 @@
         </fileSet>
     </fileSets>
 
-    <!--<files>-->
-    <!--<file>-->
-    <!--<source>target/${project.artifactId}-${project.version}-jar-with-dependencies.jar</source>-->
-    <!--<outputDirectory>lib</outputDirectory>-->
-    <!--</file>-->
-    <!--</files>-->
+    <files>
+        <file>
+        <source>target/${project.artifactId}-${project.version}-jar-with-dependencies.jar</source>
+        <outputDirectory>lib</outputDirectory>
+        </file>
+    </files>
 
     <dependencySets>
         <dependencySet>
@@ -42,6 +43,3 @@
         </dependencySet>
     </dependencySets>
 </assembly>
-
-
-

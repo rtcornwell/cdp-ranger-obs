@@ -10,73 +10,60 @@
         <module>ranger-obs-plugin</module>
     </modules>
     <packaging>pom</packaging>
+
     <name>ranger-obs</name>
-    <url>http://maven.apache.org</url> 
+    <url>http://maven.apache.org</url>
+
     <properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <maven.compiler.source>1.8</maven.compiler.source>
-      <maven.compiler.target>1.8</maven.compiler.target>
-      <hadoop.version>3.1.1.7.1.7.0-551</hadoop.version>
-      <ranger.version>2.1.0.7.1.7.0-551</ranger.version>
-      <protobuf.version>2.5.0</protobuf.version>
-      <hadoop.huaweicloud.version>2.8.3-hw-46</hadoop.huaweicloud.version>
-      <hadoop.ext.version>8.1.0-310012</hadoop.ext.version>
-  </properties>
-  <!-- <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <hadoop.version>3.1.1.7.1.7.1000-141</hadoop.version>
-    <ranger.version>2.1.0.7.1.7.1000-141</ranger.version>
-    <protobuf.version>2.5.0</protobuf.version>
-    <hadoop.huaweicloud.version>2.8.3-hw-46</hadoop.huaweicloud.version>
-    <hadoop.ext.version>8.1.2-312032</hadoop.ext.version>
-  </properties> -->
-  <!-- <profiles>
-    <profile>
-        <id>mrs</id>
-        <properties>
-            <hadoop.version>3.1.1-hw-ei-311006</hadoop.version>
-            <ranger.version>2.0.0-hw-ei-311006</ranger.version>
-        </properties>
-    </profile>
-  </profiles> -->
-  <!-- <profiles>
-      <profile>
-          <id>mrs</id>
-          <properties>
-            <hadoop.version>3.1.1.7.1.7.1000-141</hadoop.version>
-            <ranger.version>2.1.0.7.1.7.1000-141</ranger.version>
-          </properties>
-      </profile>
-  </profiles> -->
-  <repositories>
-    <repository>
-      <id>cloudera</id>
-      <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
-    </repository>
-    <repository>
-      <id>central</id>
-      <name>maven2</name>
-      <url>https://repo.maven.apache.org/maven2</url>
-    </repository> 
-    <repository>
-      <id>huawei</id>
-      <name>Huaweisdk</name>
-      <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk</url>
-    </repository> 
-  </repositories> 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-    </plugins>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <hadoop.version>3.2.2</hadoop.version>
+        <ranger.version>2.0.0</ranger.version>
+        <protobuf.version>2.5.0</protobuf.version>
+        <hadoop.huaweicloud.version>2.8.3-hw-46</hadoop.huaweicloud.version>
+        <hadoop.ext.version>8.1.0-310012</hadoop.ext.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>mrs</id>
+            <properties>
+                <hadoop.version>3.1.1-hw-ei-311006</hadoop.version>
+                <ranger.version>2.0.0-hw-ei-311006</ranger.version>
+            </properties>
+        </profile>
+    </profiles>
+
+    <repositories>
+      <!-- <repository>
+        <id>cloudera</id>
+        <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+      </repository> -->
+      <repository>
+        <id>huawei</id>
+        <name>Huaweisdk</name>
+        <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk</url>
+      </repository> 
+      <repository>
+        <id>central</id>
+        <name>maven2</name>
+        <url>https://repo.maven.apache.org/maven2</url>
+      </repository> 
+    </repositories> 
+    <build>
+      <pluginManagement>
+          <plugins>
+              <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                  <source>1.8</source>
+                  <target>1.8</target>
+                </configuration>
+            </plugin>
+          </plugins>
+      </pluginManagement>
   </build>
+
 </project>
