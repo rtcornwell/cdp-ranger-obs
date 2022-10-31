@@ -1,3 +1,6 @@
+
+<!-- Ranger-obs Maven POM -->
+
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -25,7 +28,7 @@
         <hadoop.ext.version>8.1.0-310012</hadoop.ext.version>
     </properties>
 
-    <profiles>
+    <!-- <profiles>
         <profile>
             <id>mrs</id>
             <properties>
@@ -34,23 +37,32 @@
             </properties>
         </profile>
     </profiles>
-
+ -->
     <repositories>
       <!-- <repository>
         <id>cloudera</id>
         <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
       </repository> -->
+
+      <repository>
+        <id>central</id>
+        <name>maven2</name>
+        <url>https://repo.maven.apache.org/maven2</url>
+      </repository>
+
+      <repository>
+        <id>central1</id>
+        <name>Maven Central</name>
+        <url>http://repo1.maven.org/maven2</url>
+      </repository>
+
       <repository>
         <id>huawei</id>
         <name>Huaweisdk</name>
         <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk</url>
       </repository> 
-      <repository>
-        <id>central</id>
-        <name>maven2</name>
-        <url>https://repo.maven.apache.org/maven2</url>
-      </repository> 
     </repositories> 
+
     <build>
       <pluginManagement>
           <plugins>

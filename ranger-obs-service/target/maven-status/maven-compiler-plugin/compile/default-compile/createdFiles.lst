@@ -1,0 +1,10 @@
+org\apache\ranger\obs\server\http\JMXHttpHandler.class
+org\apache\ranger\obs\security\token\SecretProvider.class
+org\apache\ranger\obs\security\sts\MrsCredentialsProvider.class
+org\apache\ranger\obs\security\sts\SSLSocketClientUtil$2.class
+org\apache\ranger\obs\security\sts\IAMSTSProvider$1.class
+org\apache\ranger\obs\server\http\HttpService$1.class
+org\apache\ranger\obs\server\http\JMXHttpHandler$1.class
+org\apache\ranger\obs\security\sts\SSLSocketClientUtil.class
+org\apache\ranger\obs\server\Server$1.class
+org\apache\ranger\obs\security\sts\SSLSocketClientUtil$1.class

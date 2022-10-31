@@ -15,10 +15,13 @@ import com.obs.services.internal.security.SecurityKeyBean;
 import com.obs.services.model.ISecurityKey;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+
+// import org.apache.commons.lang.ObjectUtils.Null;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.security.UserGroupInformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.net.URI;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -43,11 +46,11 @@ public class MrsCredentialsProvider{
     private boolean nodeCacheEnable;
     private boolean shortCircuit;
     private String  metaUrl;
-    private Configuration conf;
     // private UserGroupInformation userInfo;
     private HashMap<UserGroupInformation, ISecurityKey> securityKeyCacheMap = new HashMap<>();
     private IassHttpClient httpclient = new IassHttpClient();
     private int securityKeyMaxRetry;
+    // private UserGroupInformation userInfo;
 
     private static EcsObsCredentialsProvider ecsObsCredentialsProvider = new EcsObsCredentialsProvider();
 
@@ -60,17 +63,18 @@ public class MrsCredentialsProvider{
     }
 
     public MrsCredentialsProvider(URI uri, Configuration conf) throws Exception {
-        this.conf = conf;
         agencyMappingLocalPath = conf.get(MAPPING_KEY_NAME, "");
         nodeCacheEnable = conf.getBoolean(NODE_CACHE_ENABLE, true);
         shortCircuit = conf.getBoolean(NODE_CACHE_SHORT_CIRCUIT, false);
         metaUrl = conf.get(MRS_META_URL, "http://127.0.0.1:23443/rest/meta/security_key");
+       
         // try {
         //     userInfo = UserGroupInformation.getCurrentUser();
         // } catch (IOException e) {
         //     LOG.warn("Get user group information failed" + e);
         //     userInfo = null;
         // }
+
         IassHttpClient.init(true);
 
         EcsMeta metadata = ECSMetaHolder.getInstance().getMetadata();
@@ -85,9 +89,9 @@ public class MrsCredentialsProvider{
         securityKeyMaxRetry = conf.getInt(OBTAIN_KEY_MAX_RETRY, DEFAULT_OBTAIN_KEY_MAX_RETRY);
     }
 
-    // public void setSecurityKey(ISecurityKey iSecurityKey) {
-    //     throw new UnsupportedOperationException("EcsObsCredentialsProvider class does not support this method");
-    // }
+    public void setSecurityKey(ISecurityKey iSecurityKey) {
+        throw new UnsupportedOperationException("EcsObsCredentialsProvider class does not support this method");
+    }
 
     public synchronized ISecurityKey getSecurityKey(UserGroupInformation userInfo) {
         ISecurityKey securityKeyCache = securityKeyCacheMap.get(userInfo);
@@ -176,10 +180,15 @@ public class MrsCredentialsProvider{
         }
 
         String requestBody = bowlingJson(userDomainId, agencyName);
-        RequestBody body = RequestBody.create(JSON, requestBody);
+        // RequestBody body = RequestBody.create(JSON, requestBody); Delete this line if the below line works.
+        RequestBody body = RequestBody.create(JSON,requestBody);
         if (LOG.isDebugEnabled()) {
             LOG.debug("request body string format: " + requestBody + " request body json format: " + body);
             LOG.debug("request param user domain id: " + userDomainId);
+        }
+        if (defaultAgencySecurityKey == null) {
+            LOG.warn("defaultAgencySecurityKey is Null");
+            return defaultAgencySecurityKey;
         }
         SecurityKey assumeToken = new JavaSdkClient().getIamAssumeRoleToken(iamDomainUrl, defaultAgencySecurityKey.getSecurityToken(), defaultAgencySecurityKey.getAccessKey(),
             defaultAgencySecurityKey.getSecretKey(), requestBody, userDomainId);
@@ -226,7 +235,7 @@ public class MrsCredentialsProvider{
     }
 
     public void setEcsObsCredentialsProvider(EcsObsCredentialsProvider ecsObsCredentialsProvider) {
-        this.ecsObsCredentialsProvider = ecsObsCredentialsProvider;
+        MrsCredentialsProvider.ecsObsCredentialsProvider = ecsObsCredentialsProvider;
     }
 
     public void setHttpclient(IassHttpClient httpclient) {
