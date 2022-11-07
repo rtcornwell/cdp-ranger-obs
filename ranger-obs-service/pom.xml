@@ -77,7 +77,7 @@
             <version>${hadoop.version}</version>
             <scope>provided</scope>
         </dependency>
-<!--         <dependency>
+        <dependency>
             <groupId>com.huaweicloud</groupId>
             <artifactId>hadoop-huaweicloud</artifactId>
             <version>${hadoop.huaweicloud.version}</version>
@@ -92,7 +92,7 @@
                     <artifactId>hadoop-hdfs-client</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency> -->
+        </dependency>
     </dependencies>
     <profiles>
         <profile>

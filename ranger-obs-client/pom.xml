@@ -21,7 +21,7 @@
         <artifactId>hadoop-huaweicloud</artifactId>
         <version>${hadoop.huaweicloud.version}</version>
         <scope>provided</scope>
-        <!-- <exclusions>
+        <exclusions>
             <exclusion>
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-common</artifactId>
@@ -30,7 +30,7 @@
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-hdfs-client</artifactId>
             </exclusion>
-        </exclusions> -->
+        </exclusions>
     </dependency>
     <dependency>
         <groupId>org.apache.hadoop</groupId>

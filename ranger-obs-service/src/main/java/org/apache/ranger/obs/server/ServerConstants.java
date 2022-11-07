@@ -5,7 +5,7 @@
 package org.apache.ranger.obs.server;
 
 import org.apache.ranger.obs.authorize.RangerAuthorizer;
-import org.apache.ranger.obs.security.sts.MrsSTSProvider;
+import org.apache.ranger.obs.security.sts.CDPSTSProvider;
 import org.apache.ranger.obs.security.token.ShareFileSecretProvider;
 import org.apache.ranger.obs.security.token.SimpleSecretManager;
 
@@ -38,7 +38,7 @@ public class ServerConstants {
 
     public static final String RANGER_OBS_SERVICE_STS_PROVIDER = "ranger.obs.service.sts.provider";
 
-    public static final Class<MrsSTSProvider>  DEFAULT_RANGER_OBS_SERVICE_STS_PROVIDER = MrsSTSProvider.class;
+    public static final Class<CDPSTSProvider>  DEFAULT_RANGER_OBS_SERVICE_STS_PROVIDER = CDPSTSProvider.class;
 
     public static final String RANGER_OBS_SERVICE_STS_SOURCE = "ranger.obs.service.sts.source";
 

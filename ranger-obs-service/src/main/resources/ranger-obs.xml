@@ -28,7 +28,7 @@
     </property>
     <property>
         <name>ranger.obs.service.sts.provider</name>
-        <value>org.apache.ranger.obs.security.STSProvider</value>
+        <value>org.apache.ranger.obs.security.CDPSTSProvider</value>
     </property>
     <property>
         <name>ranger.obs.service.sts.token.url</name>

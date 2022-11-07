@@ -17,6 +17,7 @@ import org.apache.hadoop.net.NetUtils;
 import org.apache.hadoop.security.SecurityUtil;
 import org.apache.hadoop.security.UserGroupInformation;
 import org.apache.hadoop.security.token.Token;
+import org.apache.hadoop.security.token.TokenIdentifier;
 import org.apache.hadoop.security.token.delegation.AbstractDelegationTokenSecretManager;
 import org.apache.ranger.obs.authorize.Authorizer;
 import org.apache.ranger.obs.protocol.RangerObsServiceProtocol;
@@ -51,7 +52,7 @@ public class RPCService implements RangerObsServiceProtocol {
     private static final Logger LOG = LoggerFactory.getLogger(RPCService.class);
 
     private Configuration conf;
-
+    
     private AbstractDelegationTokenSecretManager dtSecretManager;
 
     private Authorizer authorizer;

@@ -36,8 +36,8 @@
                 <ranger.version>2.0.0-hw-ei-311006</ranger.version>
             </properties>
         </profile>
-    </profiles>
- -->
+    </profiles> -->
+
     <repositories>
       <repository>
         <id>cloudera</id>
@@ -48,13 +48,11 @@
         <name>maven2</name>
         <url>https://repo.maven.apache.org/maven2</url>
       </repository>
-
       <repository>
         <id>central1</id>
         <name>Maven Central</name>
         <url>http://repo1.maven.org/maven2</url>
       </repository>
-
       <repository>
         <id>huawei</id>
         <name>Huaweisdk</name>
