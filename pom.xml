@@ -61,7 +61,6 @@
         <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk</url>
       </repository> 
     </repositories> 
-
     <build>
       <pluginManagement>
           <plugins>
