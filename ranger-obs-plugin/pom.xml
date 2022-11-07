@@ -67,6 +67,21 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         <dependencies>
 
             <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.14.0</version>
+            </dependency>
+
+
+
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-jaxrs</artifactId>
+                <version>1.9.2</version>
+            </dependency>
+
+
+            <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>2.11.0</version>
@@ -78,7 +93,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
                 <artifactId>httpmime</artifactId>
                 <version>4.5.6</version>
             </dependency>
-
 
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
@@ -113,14 +127,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
                 <artifactId>httpclient</artifactId>
                 <version>4.5.13</version>
             </dependency>
-
-
-           <!--  <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>2.9.6</version>
-            </dependency> -->
-
 
             <dependency>
                 <groupId>org.xerial.snappy</groupId>

@@ -68,7 +68,7 @@
         <dependency>
             <groupId>com.huawei.mrs</groupId>
             <artifactId>mrs-obs-provider</artifactId>
-            <version>3.1.1.42</version>
+            <version>3.1.1.47</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -77,7 +77,7 @@
             <version>${hadoop.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>com.huaweicloud</groupId>
             <artifactId>hadoop-huaweicloud</artifactId>
             <version>${hadoop.huaweicloud.version}</version>
@@ -92,7 +92,7 @@
                     <artifactId>hadoop-hdfs-client</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency> -->
     </dependencies>
     <profiles>
         <profile>
@@ -106,7 +106,7 @@
                 <dependency>
                     <groupId>com.huawei.mrs</groupId>
                     <artifactId>mrs-obs-provider</artifactId>
-                    <version>3.1.1.50.6.2</version>
+                    <version>3.1.1.47</version>
                 </dependency>
             </dependencies>
         </profile>
