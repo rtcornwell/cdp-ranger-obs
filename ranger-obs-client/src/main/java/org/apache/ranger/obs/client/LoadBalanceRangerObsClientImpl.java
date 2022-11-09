@@ -218,12 +218,17 @@ public class LoadBalanceRangerObsClientImpl implements RangerObsClient {
                 // make sure each provider is tried at least once
                 if (action.action == RetryAction.RetryDecision.FAIL
                     && numFailovers >= providers.length - 1) {
-                    LOG.error("Aborting since the Request has failed with all ranger-obs-service"
+                        LOG.error("Aborting since the Request has failed with all ranger-obs-service"
+                            + " providers(depending on {}={} setting and numProviders={})"
+                            + " in the group OR the exception is not recoverable",
+                            ClientConstants.RANGER_OBS_CLIENT_FAILOVER_MAX_RETRIES,
+                            providers.length);
+                    /* LOG.error("Aborting since the Request has failed with all ranger-obs-service"
                             + " providers(depending on {}={} setting and numProviders={})"
                             + " in the group OR the exception is not recoverable",
                         ClientConstants.RANGER_OBS_CLIENT_FAILOVER_MAX_RETRIES,
                         conf.getInt(ClientConstants.RANGER_OBS_CLIENT_FAILOVER_MAX_RETRIES, providers.length),
-                        providers.length);
+                        providers.length); */
                     throw ex;
                 }
                 if ((numFailovers + 1) % providers.length == 0) {
