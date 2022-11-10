@@ -34,7 +34,7 @@ public class ServerConstants {
 
     public static final String RANGER_OBS_SERVICE_STS_ENABLE = "ranger.obs.service.sts.enable";
 
-    public static final Boolean DEFAULT_RANGER_OBS_SERVICE_STS_ENABLE = false;
+    public static final Boolean DEFAULT_RANGER_OBS_SERVICE_STS_ENABLE = true;
 
     public static final String RANGER_OBS_SERVICE_STS_PROVIDER = "ranger.obs.service.sts.provider";
 
