@@ -39,10 +39,10 @@
     </profiles>
 
     <repositories>
-      <!-- <repository>
+      <repository>
         <id>cloudera</id>
         <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
-      </repository> -->
+      </repository>
       <repository>
         <id>central</id>
         <name>maven2</name>
