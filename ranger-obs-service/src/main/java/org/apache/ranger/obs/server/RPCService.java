@@ -8,6 +8,7 @@ import com.google.protobuf.BlockingService;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.InvalidRequestException;
+import org.apache.hadoop.fs.FsTracer;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.ipc.ProtobufRpcEngine;
 import org.apache.hadoop.ipc.RPC;
@@ -343,8 +344,9 @@ public class RPCService implements RangerObsServiceProtocol {
             String renewer = getRemoteUser().getShortUserName();
             long expiryTime = this.dtSecretManager.renewToken(token, renewer);
             DelegationTokenIdentifier dtId = DelegationTokenIdentifier.decodeDelegationToken(token);
-            LOG.info("renewDelegationToken: [renewer: {}], [DelegationTokenIdentifier: {}], [expiryTime: {}]",
-                renewer, dtId.toString(), this.formatDate(new Date(expiryTime)));
+           /*  LOG.info("renewDelegationToken: [renewer: {}], [DelegationTokenIdentifier: {}], [expiryTime: {}]",
+                renewer, dtId.toString(), this.formatDate(new Date(expiryTime))); */
+                LOG.info("renewDelegationToken: [renewer: {"+renewer+"}], [DelegationTokenIdentifier: {"+dtId.toString()+"}], [expiryTime: {"+this.formatDate(new Date(expiryTime))+"}]");
             return expiryTime;
         } else {
             LOG.warn("trying to renew DT with no secret manager running");
@@ -395,9 +397,8 @@ public class RPCService implements RangerObsServiceProtocol {
 
         boolean allow = this.authorizer.checkPermission(permissionReq, ugi);
         long et = System.currentTimeMillis();
-        LOG.debug("checkPermission: [ugi: {}], [bucket: {}], [object: {}], [action: {}], [costTime: {}], [result: {}]",
-            ugi, permissionReq.getBucketName(), permissionReq.getObjectKey(), permissionReq.getAccessType(), et - st,
-            allow);
+        LOG.debug("checkPermission: [ugi: {"+ugi+"}], [bucket: {"+ permissionReq.getBucketName() + "}], [object: {" + permissionReq.getObjectKey() + "}], [action: {" + permissionReq.getAccessType() + "}], [costTime: {" + (et - st) +"}], [result: {" + allow + "}]");
+    
         return allow;
     }
 
