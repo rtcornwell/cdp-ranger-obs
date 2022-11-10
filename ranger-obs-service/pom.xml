@@ -31,7 +31,7 @@
       <dependency>
           <groupId>org.apache.hadoop</groupId>
           <artifactId>hadoop-common</artifactId>
-          
+          <version>${hadoop.version}</version>
       </dependency>
       <dependency>
           <groupId>org.apache.hadoop</groupId>
@@ -65,7 +65,7 @@
           <version>${hadoop.version}</version>
           <scope>provided</scope>
       </dependency>
-      <dependency>
+      <!-- <dependency>
           <groupId>com.huaweicloud</groupId>
           <artifactId>hadoop-huaweicloud</artifactId>
           <version>${hadoop.huaweicloud.version}</version>
@@ -80,7 +80,7 @@
                   <artifactId>hadoop-hdfs-client</artifactId>
               </exclusion>
           </exclusions>
-      </dependency>
+      </dependency> -->
   </dependencies>
   <profiles>
       <profile>
@@ -151,187 +151,5 @@
   </build>
 
 
-    <dependencyManagement>
-    
-
-        <dependencies>
-
-            <dependency>
-                <groupId>net.java.dev.jna</groupId>
-                <artifactId>jna-platform</artifactId>
-                <version>4.2.2</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>net.java.dev.jna</groupId>
-                <artifactId>jna</artifactId>
-                <version>4.2.2</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpmime</artifactId>
-                <version>4.5.6</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>4.5.6</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-math3</artifactId>
-                <version>3.6.1</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.xerial.snappy</groupId>
-                <artifactId>snappy-java</artifactId>
-                <version>1.1.7.1</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>16.0.1</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>com.nimbusds</groupId>
-                <artifactId>nimbus-jose-jwt</artifactId>
-                <version>3.10</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
-                <version>1.2.16</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
-                <version>1.6.1</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>1.6.4</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.codehaus.jackson</groupId>
-                <artifactId>jackson-mapper-asl</artifactId>
-                <version>1.9.13</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.codehaus.jackson</groupId>
-                <artifactId>jackson-core-asl</artifactId>
-                <version>1.9.13</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>commons-codec</groupId>
-                <artifactId>commons-codec</artifactId>
-                <version>1.9</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>com.google.code.findbugs</groupId>
-                <artifactId>jsr305</artifactId>
-                <version>1.3.9</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>2.12.0</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
-                <version>2.10.0</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-api</artifactId>
-                <version>2.12.0</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>com.squareup.okio</groupId>
-                <artifactId>okio</artifactId>
-                <version>1.17.2</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>com.squareup.okhttp3</groupId>
-                <artifactId>okhttp</artifactId>
-                <version>3.14.2</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-common</artifactId>
-                <version>3.1.1</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-annotations</artifactId>
-                <version>2.11.1</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>2.11.1</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>org.apache.zookeeper</groupId>
-                <artifactId>zookeeper</artifactId>
-                <version>3.4.8</version>
-            </dependency>
-
-        
-
-            <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>1.2</version>
-            </dependency>
-
-        </dependencies>
-
-    </dependencyManagement>
+   
 </project>
