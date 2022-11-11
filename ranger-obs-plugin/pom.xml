@@ -18,13 +18,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 
 <dependencies>
 <dependency>
-   <groupId>org.apache.ranger</groupId>
+   <groupId>org.apache.ranger</groupId> <!--crdaignore-->
    <artifactId>ranger-plugins-common</artifactId>
    <version>${ranger.version}</version>
    <scope>provided</scope>
 </dependency>
 <dependency>
-   <groupId>junit</groupId>
+   <groupId>junit</groupId> <!--crdaignore-->
    <artifactId>junit</artifactId>
    <version>4.12</version>
    <scope>test</scope>
@@ -36,12 +36,12 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
    <plugin>
        <groupId>org.apache.maven.plugins</groupId>
        <artifactId>maven-jar-plugin</artifactId>
-       <version>2.5</version>
+       <version>3.3.0</version>
    </plugin>
    <plugin>
        <groupId>org.apache.maven.plugins</groupId>
        <artifactId>maven-assembly-plugin</artifactId>
-       <version>2.4</version>
+       <version>3.4.2</version>
        <executions>
            <execution>
                <id>make-assembly</id>

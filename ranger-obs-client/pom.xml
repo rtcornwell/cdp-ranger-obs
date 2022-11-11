@@ -18,7 +18,7 @@
 
 <dependencies>
  <dependency>
-     <groupId>com.huaweicloud</groupId>
+     <groupId>com.huaweicloud</groupId> <!--crdaignore-->
      <artifactId>hadoop-huaweicloud</artifactId>
      <version>${hadoop.huaweicloud.version}</version>
      <scope>provided</scope>
@@ -34,13 +34,13 @@
      </exclusions>
  </dependency>
  <dependency>
-     <groupId>org.apache.hadoop</groupId>
+     <groupId>org.apache.hadoop</groupId> <!--crdaignore-->
      <artifactId>hadoop-common</artifactId>
      <version>${hadoop.version}</version>
      <scope>provided</scope>
  </dependency>
  <dependency>
-     <groupId>org.apache.hadoop</groupId>
+     <groupId>org.apache.hadoop</groupId> <!--crdaignore-->
      <artifactId>hadoop-mapreduce-client-core</artifactId>
      <version>${hadoop.version}</version>
      <scope>provided</scope>
@@ -48,7 +48,7 @@
  <dependency>
      <groupId>junit</groupId>
      <artifactId>junit</artifactId>
-     <version>4.12</version>
+     <version>4.13</version>
      <scope>test</scope>
  </dependency>
 </dependencies>
@@ -79,7 +79,7 @@
      <extension>
          <groupId>kr.motd.maven</groupId>
          <artifactId>os-maven-plugin</artifactId>
-         <version>1.5.0.Final</version>
+         <version>1.7.1</version>
      </extension>
  </extensions>
 
@@ -87,17 +87,17 @@
      <plugin>
          <groupId>org.apache.maven.plugins</groupId>
          <artifactId>maven-compiler-plugin</artifactId>
-         <version>3.1</version>
+         <version>3.10.1</version>
          <configuration>
-             <source>8</source>
-             <target>8</target>
+             <source>1.8</source>
+             <target>1.8</target>
              <compilerArgument>-Xlint:unchecked</compilerArgument>
          </configuration>
      </plugin>
      <plugin>
          <groupId>org.apache.maven.plugins</groupId>
          <artifactId>maven-jar-plugin</artifactId>
-         <version>3.0.2</version>
+         <version>3.3.0</version>
          <configuration>
              <excludes>
                  <!-- 排除controller包及下面的资源 -->
@@ -128,7 +128,7 @@
      <plugin>
          <groupId>org.apache.maven.plugins</groupId>
          <artifactId>maven-shade-plugin</artifactId>
-         <version>3.2.2</version>
+         <version>3.4.1</version>
          <configuration>
              <createDependencyReducedPom>false</createDependencyReducedPom>
          </configuration>
@@ -145,7 +145,7 @@
      <plugin>
          <groupId>org.xolstice.maven.plugins</groupId>
          <artifactId>protobuf-maven-plugin</artifactId>
-         <version>0.5.1</version>
+         <version>0.6.1</version>
          <configuration>
              <protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
              <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}
