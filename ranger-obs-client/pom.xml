@@ -18,7 +18,7 @@
 
 <dependencies>
  <dependency>
-     <groupId>com.huaweicloud</groupId> <!--crdaignore-->
+     <groupId>com.huaweicloud.obs</groupId> <!--crdaignore-->
      <artifactId>hadoop-huaweicloud</artifactId>
      <version>${hadoop.huaweicloud.version}</version>
      <scope>provided</scope>
