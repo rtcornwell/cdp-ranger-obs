@@ -29,7 +29,7 @@
         <provider.version>3.1.1.47</provider.version>
     </properties>
 
-    <profiles>
+    <!-- <profiles>
         <profile>
             <id>mrs</id>
             <properties>
@@ -37,7 +37,7 @@
                 <ranger.version>2.0.0-hw-ei-311006</ranger.version>
             </properties>
         </profile>
-    </profiles>
+    </profiles> -->
 
     <repositories>
       <repository>
