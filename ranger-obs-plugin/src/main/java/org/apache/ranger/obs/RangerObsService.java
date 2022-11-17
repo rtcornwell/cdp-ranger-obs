@@ -4,7 +4,7 @@
 
 package org.apache.ranger.obs;
 
-// import org.apache.commons.lang.ObjectUtils.Null;
+import org.apache.commons.lang.ObjectUtils.Null;
 import org.apache.ranger.plugin.client.BaseClient;
 import org.apache.ranger.plugin.service.RangerBaseService;
 import org.apache.ranger.plugin.service.ResourceLookupContext;

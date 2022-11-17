@@ -27,6 +27,13 @@
             </includes>
             <outputDirectory>conf</outputDirectory>
         </fileSet>
+        <fileSet>
+            <directory>src/main/lib</directory>
+            <includes>
+                <include>*</include>
+            </includes>
+            <outputDirectory>lib</outputDirectory>
+        </fileSet>
     </fileSets>
 
     <files>
