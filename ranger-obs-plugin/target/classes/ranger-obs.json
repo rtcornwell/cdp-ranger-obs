@@ -2,7 +2,7 @@
   "name": "obs",
   "implClass": "org.apache.ranger.obs.RangerObsService",
   "label": "OBS",
-  "description": "OBS",
+  "description": "OBS Ranger Plugin",
   "guid": "0d047247-bafe-4cf8-8e9b-d5d377284b2g",
   "version": 1,
   "isEnabled": 1,

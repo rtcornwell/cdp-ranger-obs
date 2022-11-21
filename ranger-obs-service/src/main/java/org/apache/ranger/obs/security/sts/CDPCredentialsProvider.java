@@ -5,7 +5,7 @@ import com.huawei.mrs.ECSMetaHolder;
 import com.huawei.mrs.EcsMeta;
 import com.huawei.mrs.IassHttpClient;
 import com.huawei.mrs.JavaSdkClient;
-// import com.huawei.mrs.exception.TooManyRequestsException;
+import com.huawei.mrs.exception.TooManyRequestsException;
 
 import com.obs.services.EcsObsCredentialsProvider;
 import com.obs.services.exception.ObsException;
@@ -16,12 +16,13 @@ import com.obs.services.model.ISecurityKey;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
-// import org.apache.commons.lang.ObjectUtils.Null;
+import org.apache.commons.lang.ObjectUtils.Null;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.security.UserGroupInformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.net.URI;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -35,7 +36,7 @@ public class CDPCredentialsProvider{
     private final String NODE_CACHE_ENABLE = "fs.obs.auth.node-cache.enable";
     private final String NODE_CACHE_SHORT_CIRCUIT = "fs.obs.auth.node-cache-short-circuit.enable";
     private final String MRS_META_URL = "fs.obs.mrs.meta.url";
-    // private final String ECS_MEAT_URL = "fs.obs.ecs.meta.url";
+    private final String ECS_MEAT_URL = "fs.obs.ecs.meta.url";
     private final String OBTAIN_KEY_MAX_RETRY = "mrs.provider.key.max.retry";
     private final int DEFAULT_OBTAIN_KEY_MAX_RETRY = 3;
     private String agencyMappingLocalPath;
@@ -46,11 +47,10 @@ public class CDPCredentialsProvider{
     private boolean nodeCacheEnable;
     private boolean shortCircuit;
     private String  metaUrl;
-    // private UserGroupInformation userInfo;
+    private UserGroupInformation userInfo;
     private HashMap<UserGroupInformation, ISecurityKey> securityKeyCacheMap = new HashMap<>();
     private IassHttpClient httpclient = new IassHttpClient();
     private int securityKeyMaxRetry;
-    // private UserGroupInformation userInfo;
 
     private static EcsObsCredentialsProvider ecsObsCredentialsProvider = new EcsObsCredentialsProvider();
 
@@ -68,12 +68,12 @@ public class CDPCredentialsProvider{
         shortCircuit = conf.getBoolean(NODE_CACHE_SHORT_CIRCUIT, false);
         metaUrl = conf.get(MRS_META_URL, "http://127.0.0.1:23443/rest/meta/security_key");
        
-        // try {
-        //     userInfo = UserGroupInformation.getCurrentUser();
-        // } catch (IOException e) {
-        //     LOG.warn("Get user group information failed" + e);
-        //     userInfo = null;
-        // }
+       try {
+             userInfo = UserGroupInformation.getCurrentUser();
+         } catch (IOException e) {
+            LOG.warn("Get user group information failed" + e);
+            userInfo = null;
+        }
 
         IassHttpClient.init(true);
 
@@ -114,12 +114,12 @@ public class CDPCredentialsProvider{
             try {
                 securityKey = httpclient.getKeyFromNodeCache(iamDomainUrl, userDomainName,
                     userDomainId, agencyName, metaUrl);
-            // } catch (TooManyRequestsException tme) {
-            //     LOG.error("Too many request when get temporary security key, never try to request ecs directly");
-            //     throw new ObsException("Too many request when get temporary security key. " + tme.getMessage());
-            } catch (Exception e) {
+                } catch (TooManyRequestsException tme) {
+                LOG.error("Too many request when get temporary security key, never try to request ecs directly");
+                throw new ObsException("Too many request when get temporary security key. " + tme.getMessage());
+                 } catch (Exception e) {
                 LOG.error("Failed to get temporary security key from mrs meta server", e);
-            }
+                 }
             // if get security key from mrs meta failed , do failover
             if (securityKey == null) {
                 if (shortCircuit) {
@@ -180,8 +180,8 @@ public class CDPCredentialsProvider{
         }
 
         String requestBody = bowlingJson(userDomainId, agencyName);
-        // RequestBody body = RequestBody.create(JSON, requestBody); Delete this line if the below line works.
-        RequestBody body = RequestBody.create(JSON,requestBody);
+        
+        RequestBody body = RequestBody.create(JSON, requestBody);
         if (LOG.isDebugEnabled()) {
             LOG.debug("request body string format: " + requestBody + " request body json format: " + body);
             LOG.debug("request param user domain id: " + userDomainId);

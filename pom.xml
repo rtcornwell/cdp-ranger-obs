@@ -21,11 +21,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
       <maven.compiler.target>1.8</maven.compiler.target>
-        <hadoop.version>3.1.1</hadoop.version>
+        <hadoop.version>3.1.1.7.1.7.1000-141</hadoop.version>
         <ranger.version>2.0.0</ranger.version>
         <protobuf.version>2.5.0</protobuf.version>
-        <hadoop.huaweicloud.version>2.8.3-hw-46</hadoop.huaweicloud.version>
-        <hadoop.ext.version>8.1.0-310012</hadoop.ext.version>
+        <!-- <hadoop.huaweicloud.version>2.8.3-hw-46</hadoop.huaweicloud.version> -->
+        <hadoop.huaweicloud.version>3.1.1-hw-46.1</hadoop.huaweicloud.version>
+        <!-- <hadoop.ext.version>8.1.0-310012</hadoop.ext.version> -->
+        <hadoop.ext.version>8.1.2-312005</hadoop.ext.version>
         <provider.version>3.1.1.47</provider.version>
     </properties>
 
@@ -40,16 +42,17 @@
     </profiles> -->
 
     <repositories>
-      <repository>
-        <id>huawei</id>
-        <name>Huaweisdk</name>
-        <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk</url>
-      </repository> 
+       
       <repository>
         <id>cloudera</id>
         <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
       </repository>
       <repository>
+        <id>huawei</id>
+        <name>Huaweisdk</name>
+        <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk</url>
+      </repository>
+      <!-- <repository>
         <id>central</id>
         <name>maven2</name>
         <url>https://repo.maven.apache.org/maven2</url>
@@ -58,7 +61,7 @@
         <id>central1</id>
         <name>Maven Central</name>
         <url>http://repo1.maven.org/maven2</url>
-      </repository>
+      </repository> -->
       
     </repositories> 
     <build>
