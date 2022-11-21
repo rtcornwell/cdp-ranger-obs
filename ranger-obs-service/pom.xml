@@ -69,7 +69,7 @@
           <groupId>com.huaweicloud.obs</groupId> <!--crdaignore-->
           <artifactId>hadoop-huaweicloud</artifactId>
           <version>${hadoop.huaweicloud.version}</version>
-          <scope>provided</scope>
+          <!-- <scope>provided</scope> -->
           <exclusions>
               <exclusion>
                   <groupId>org.apache.hadoop</groupId> 
