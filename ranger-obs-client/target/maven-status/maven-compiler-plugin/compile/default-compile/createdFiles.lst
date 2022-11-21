@@ -1,4 +1,5 @@
 org\apache\hadoop\security\proto\SecurityProtos$CredentialsKVProto.class
+org\apache\hadoop\security\proto\SecurityProtos$GetDelegationTokenResponseProtoOrBuilder.class
 org\apache\hadoop\security\proto\SecurityProtos$RenewDelegationTokenRequestProtoOrBuilder.class
 org\apache\ranger\obs\protocolpb\RangerObsServiceProtocolPB.class
 org\apache\hadoop\security\proto\SecurityProtos$CancelDelegationTokenResponseProto.class
@@ -55,8 +56,10 @@ org\apache\ranger\obs\client\LoadBalanceRangerObsClientImpl$4.class
 org\apache\ranger\obs\security\authorization\AccessType.class
 org\apache\ranger\obs\security\authorization\PermissionRequest.class
 org\apache\hadoop\security\proto\SecurityProtos$RenewDelegationTokenResponseProto.class
+org\apache\hadoop\security\proto\SecurityProtos$GetDelegationTokenRequestProto.class
 org\apache\hadoop\security\proto\SecurityProtos$RenewDelegationTokenRequestProto$1.class
 org\apache\ranger\obs\security\sts\GetSTSRequest.class
+org\apache\hadoop\security\proto\SecurityProtos$RenewDelegationTokenResponseProto$Builder.class
 org\apache\ranger\obs\protocol\RangerObsServiceProtocol.class
 org\apache\ranger\obs\security\token\DelegationTokenIdentifier.class
 org\apache\ranger\obs\protocol\proto\RangerObsServiceProtocolProtos$1.class
@@ -64,6 +67,7 @@ org\apache\ranger\obs\security\token\DelegationTokenSelector.class
 org\apache\hadoop\security\proto\SecurityProtos$CredentialsKVProtoOrBuilder.class
 org\apache\hadoop\security\proto\SecurityProtos$1.class
 org\apache\hadoop\security\proto\SecurityProtos$GetDelegationTokenRequestProto$1.class
+org\apache\hadoop\security\proto\SecurityProtos.class
 org\apache\ranger\obs\protocol\proto\RangerObsServiceProtocolProtos$PermissionRequestProto$Builder.class
 org\apache\ranger\obs\protocol\proto\RangerObsServiceProtocolProtos$PermissionRequestProtoOrBuilder.class
 org\apache\hadoop\security\proto\SecurityProtos$RenewDelegationTokenResponseProto$1.class
