@@ -27,21 +27,7 @@
             </includes>
             <outputDirectory>conf</outputDirectory>
         </fileSet>
-<<<<<<< HEAD
-        <!-- <fileSet>
-=======
-        <fileSet>
->>>>>>> b656f20b106d05e12ef2cdf3b103d6966222f978
-            <directory>src/main/lib</directory>
-            <includes>
-                <include>*</include>
-            </includes>
-            <outputDirectory>lib</outputDirectory>
-<<<<<<< HEAD
-        </fileSet> -->
-=======
-        </fileSet>
->>>>>>> b656f20b106d05e12ef2cdf3b103d6966222f978
+
     </fileSets>
 
     <files>
