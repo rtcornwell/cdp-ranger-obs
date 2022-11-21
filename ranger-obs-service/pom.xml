@@ -57,13 +57,13 @@
           <groupId>com.huawei.mrs</groupId> <!--crdaignore-->
           <artifactId>mrs-obs-provider</artifactId>
           <version>${provider.version}</version>
-          <scope>provided</scope>
+          <!-- <scope>provided</scope> -->
       </dependency>
       <dependency>
           <groupId>org.apache.hadoop</groupId> <!--crdaignore-->
           <artifactId>hadoop-minikdc</artifactId>
           <version>${hadoop.version}</version>
-          <scope>provided</scope>
+          <!-- <scope>provided</scope> -->
       </dependency>
       <dependency>
           <groupId>com.huaweicloud.obs</groupId> <!--crdaignore-->
