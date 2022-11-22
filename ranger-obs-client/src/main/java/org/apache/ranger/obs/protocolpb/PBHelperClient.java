@@ -20,7 +20,7 @@ import org.apache.ranger.obs.security.token.DelegationTokenIdentifier;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class PBHelperClient {
-    private static final ConcurrentHashMap<Object, ByteString> FIXED_BYTESTRING_CACHE = new ConcurrentHashMap();
+    private static final ConcurrentHashMap<Object, ByteString> FIXED_BYTESTRING_CACHE = new ConcurrentHashMap<>();
 
     public static Token<DelegationTokenIdentifier> convertDelegationToken(TokenProto blockToken) {
         return new Token(blockToken.getIdentifier().toByteArray(), blockToken.getPassword().toByteArray(),

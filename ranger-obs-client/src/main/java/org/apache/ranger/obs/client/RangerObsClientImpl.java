@@ -42,7 +42,7 @@ public class RangerObsClientImpl implements RangerObsClient {
 
     private String serviceName;
 
-    private volatile AtomicReference<RangerObsServiceProtocol> rangerClientProxy = new AtomicReference();
+    private volatile AtomicReference<RangerObsServiceProtocol> rangerClientProxy = new AtomicReference<>();
 
     @Override
     public Token<DelegationTokenIdentifier> getDelegationToken(String renewer) throws IOException {
