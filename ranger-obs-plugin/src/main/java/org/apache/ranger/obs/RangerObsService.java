@@ -4,7 +4,7 @@
 
 package org.apache.ranger.obs;
 
-import org.apache.commons.lang.ObjectUtils.Null;
+// import org.apache.commons.lang.ObjectUtils.Null;
 import org.apache.ranger.plugin.client.BaseClient;
 import org.apache.ranger.plugin.service.RangerBaseService;
 import org.apache.ranger.plugin.service.ResourceLookupContext;
@@ -22,7 +22,7 @@ public class RangerObsService extends RangerBaseService {
     }
 
     private Map<String, Object> buildResponseDataMap(boolean connectSuccess, String message, String description) {
-        Map<String, Object> responseData = new HashMap();
+        Map<String, Object> responseData = new HashMap<>();
         BaseClient.generateResponseDataMap(connectSuccess, message, description, (Long) null, (String) null,
             responseData);
         return responseData;
@@ -30,7 +30,7 @@ public class RangerObsService extends RangerBaseService {
 
     @Override
     public List<String> lookupResource(ResourceLookupContext resourceLookupContext) throws Exception {
-        List<String> resourceList = new ArrayList();
+        List<String> resourceList = new ArrayList<>();
         String userInput = resourceLookupContext.getUserInput();
         resourceList.add(userInput);
         return resourceList;
