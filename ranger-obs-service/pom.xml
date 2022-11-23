@@ -32,16 +32,19 @@
           <groupId>org.apache.hadoop</groupId> <!--crdaignore-->
           <artifactId>hadoop-common</artifactId>
           <version>${hadoop.version}</version>
+          <scope>provided</scope>
       </dependency>
       <dependency>
           <groupId>org.apache.hadoop</groupId> <!--crdaignore-->
           <artifactId>hadoop-hdfs-client</artifactId>
           <version>${hadoop.version}</version>
+          <scope>provided</scope>
       </dependency>
       <dependency>
           <groupId>org.apache.ranger</groupId> <!--crdaignore-->
           <artifactId>ranger-plugins-common</artifactId>
           <version>${ranger.version}</version>
+          <scope>provided</scope>
       </dependency>
       <dependency>
           <groupId>com.huaweicloud</groupId> <!--crdaignore-->
@@ -52,18 +55,19 @@
         <groupId>org.apache.commons</groupId> <!--crdaignore-->
         <artifactId>commons-lang3</artifactId>
         <version>3.12.0</version>
+        <scope>provided</scope>
       </dependency>
       <dependency>
           <groupId>com.huawei.mrs</groupId> <!--crdaignore-->
           <artifactId>mrs-obs-provider</artifactId>
           <version>${provider.version}</version>
-          <!-- <scope>provided</scope> -->
+          <scope>provided</scope>
       </dependency>
       <dependency>
           <groupId>org.apache.hadoop</groupId> <!--crdaignore-->
           <artifactId>hadoop-minikdc</artifactId>
           <version>${hadoop.version}</version>
-          <!-- <scope>provided</scope> -->
+          <scope>provided</scope>
       </dependency>
       <dependency>
           <groupId>com.huaweicloud.obs</groupId> <!--crdaignore-->
@@ -127,7 +131,7 @@
                   </excludes>
               </configuration>
           </plugin>
-         <!--  <plugin>
+          <plugin>
             <groupId>org.apache.maven.plugins</groupId> 
             <artifactId>maven-dependency-plugin</artifactId>
             <version>3.3.0</version>
@@ -143,7 +147,7 @@
                 </configuration>
               </execution>
             </executions>
-          </plugin> -->
+          </plugin>
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-assembly-plugin</artifactId>
@@ -167,37 +171,4 @@
          
       </plugins>
   </build>
-
-
-    <dependencyManagement>
-    
-
-        <dependencies>
-
-            <dependency>
-                <groupId>org.xerial.snappy</groupId>
-                <artifactId>snappy-java</artifactId>
-                <version>1.1.7.1</version>
-            </dependency>
-
-
-            
-
-
-            <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>1.2</version>
-            </dependency>
-
-
-            
-
-        
-
-            
-
-        </dependencies>
-
-    </dependencyManagement>
 </project>
