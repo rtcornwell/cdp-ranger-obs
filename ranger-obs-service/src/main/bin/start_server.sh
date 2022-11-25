@@ -1,7 +1,7 @@
 #!/bin/sh
 
 export LANG=en_US.utf8
-#export JAVA_HOME=
+#export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre"
 
 export PATH=$PATH:$JAVA_HOME/bin
 
