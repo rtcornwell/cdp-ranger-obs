@@ -1,11 +1,11 @@
 {
   "name": "obs",
   "implClass": "org.apache.ranger.obs.RangerObsService",
-  "label": "OBS",
+  "label": "OBS Plugin",
   "description": "OBS Ranger Plugin",
-  "guid": "0d047247-bafe-4cf8-8e9b-d5d377284b2g",
   "version": 1,
-  "isEnabled": 1,
+  "isEnabled": true,
+  "options": {},
   "resources": [
     {
       "itemId": 1,
@@ -20,7 +20,7 @@
       "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
       "matcherOptions": {
         "wildCard": true,
-        "ignoreCase": false
+        "ignoreCase": true
       },
       "validationRegEx": "",
       "validationMessage": "",
@@ -35,13 +35,13 @@
       "level": 20,
       "parent": "bucket",
       "mandatory": true,
-      "lookupSupported": true,
+      "lookupSupported": false,
       "recursiveSupported": true,
       "excludesSupported": true,
       "matcher": "org.apache.ranger.plugin.resourcematcher.RangerPathResourceMatcher",
       "matcherOptions": {
         "wildCard": true,
-        "ignoreCase": false
+        "ignoreCase": true
       },
       "validationRegEx": "",
       "validationMessage": "",
